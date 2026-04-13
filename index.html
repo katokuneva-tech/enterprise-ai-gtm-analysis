@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enterprise AI GTM &mdash; Аналитика для MWS</title>
+<style>
+:root {
+  --bg: #0a0a0f;
+  --surface: #12121a;
+  --surface2: #1a1a26;
+  --border: #2a2a3a;
+  --text: #e0e0e8;
+  --text2: #8888a0;
+  --accent: #6366f1;
+  --accent2: #818cf8;
+  --green: #34d399;
+  --red: #f87171;
+  --orange: #fbbf24;
+  --cyan: #22d3ee;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+a { color: var(--accent2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Sidebar */
+.sidebar {
+  position: fixed; top: 0; left: 0; width: 280px; height: 100vh;
+  background: var(--surface); border-right: 1px solid var(--border);
+  overflow-y: auto; z-index: 100; padding: 24px 0;
+  transition: transform 0.3s;
+}
+.sidebar-header { padding: 0 20px 20px; border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+.sidebar-header h2 { font-size: 15px; font-weight: 700; color: var(--accent2); letter-spacing: -0.3px; }
+.sidebar-header p { font-size: 11px; color: var(--text2); margin-top: 4px; }
+.nav-group { margin-bottom: 8px; }
+.nav-group-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text2); padding: 8px 20px 4px; }
+.nav-link {
+  display: block; padding: 6px 20px; font-size: 13px; color: var(--text2);
+  cursor: pointer; transition: all 0.15s; border-left: 2px solid transparent;
+}
+.nav-link:hover { color: var(--text); background: var(--surface2); }
+.nav-link.active { color: var(--accent2); border-left-color: var(--accent); background: rgba(99,102,241,0.08); }
+.nav-link .badge {
+  display: inline-block; font-size: 9px; padding: 1px 6px; border-radius: 8px;
+  margin-left: 6px; font-weight: 600; vertical-align: middle;
+}
+.badge-new { background: rgba(99,102,241,0.2); color: var(--accent2); }
+.badge-warn { background: rgba(248,113,113,0.2); color: var(--red); }
+
+/* Main */
+.main { margin-left: 280px; padding: 40px 48px 80px; max-width: 960px; }
+
+/* Hamburger */
+.hamburger { display: none; position: fixed; top: 16px; left: 16px; z-index: 200; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; cursor: pointer; color: var(--text); font-size: 20px; }
+
+/* Hero */
+.hero { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+.hero h1 { font-size: 32px; font-weight: 800; letter-spacing: -1px; line-height: 1.2; background: linear-gradient(135deg, var(--accent2), var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero .subtitle { font-size: 16px; color: var(--text2); margin-top: 8px; }
+
+/* Stats row */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin: 32px 0; }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+.stat-card .number { font-size: 28px; font-weight: 800; letter-spacing: -1px; }
+.stat-card .label { font-size: 12px; color: var(--text2); margin-top: 4px; }
+.stat-card.green .number { color: var(--green); }
+.stat-card.red .number { color: var(--red); }
+.stat-card.orange .number { color: var(--orange); }
+.stat-card.accent .number { color: var(--accent2); }
+.stat-card.cyan .number { color: var(--cyan); }
+
+/* Section */
+section { margin-bottom: 56px; scroll-margin-top: 24px; }
+section h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+section h3 { font-size: 16px; font-weight: 600; margin: 24px 0 12px; color: var(--accent2); }
+section h4 { font-size: 14px; font-weight: 600; margin: 16px 0 8px; }
+p, li { font-size: 14px; line-height: 1.7; }
+p { margin-bottom: 12px; }
+ul, ol { padding-left: 20px; margin-bottom: 12px; }
+li { margin-bottom: 4px; }
+strong { color: #fff; }
+blockquote { border-left: 3px solid var(--accent); padding: 12px 16px; background: rgba(99,102,241,0.06); border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 14px; }
+
+/* Tables */
+.table-wrap { overflow-x: auto; margin: 16px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { background: var(--surface2); font-weight: 600; text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--border); white-space: nowrap; }
+td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+tr:hover td { background: rgba(99,102,241,0.04); }
+
+/* Cards */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 16px 0; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+.card h4 { margin: 0 0 8px; font-size: 15px; color: #fff; }
+.card p { font-size: 13px; color: var(--text2); margin-bottom: 0; }
+.card .tag { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 6px; font-weight: 600; margin-top: 8px; }
+.tag-works { background: rgba(52,211,153,0.15); color: var(--green); }
+.tag-risky { background: rgba(248,113,113,0.15); color: var(--red); }
+.tag-mws { background: rgba(99,102,241,0.15); color: var(--accent2); }
+
+/* Timeline */
+.timeline { position: relative; padding-left: 24px; margin: 20px 0; }
+.timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+.timeline-item { position: relative; margin-bottom: 20px; }
+.timeline-item::before { content: ''; position: absolute; left: -20px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); }
+.timeline-item.danger::before { background: var(--red); }
+.timeline-item.success::before { background: var(--green); }
+.timeline-item .time { font-size: 11px; font-weight: 700; color: var(--text2); text-transform: uppercase; letter-spacing: 0.5px; }
+.timeline-item .desc { font-size: 13px; margin-top: 2px; }
+
+/* Code / pre */
+pre { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px; overflow-x: auto; font-size: 12px; font-family: 'JetBrains Mono', 'Fira Code', monospace; margin: 16px 0; white-space: pre; }
+
+/* Verdict box */
+.verdict { background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.2); border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+.verdict-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent2); margin-bottom: 6px; }
+
+/* Warning box */
+.warning { background: rgba(248,113,113,0.08); border: 1px solid rgba(248,113,113,0.2); border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+.warning-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--red); margin-bottom: 6px; }
+
+/* Success box */
+.success-box { background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.2); border-radius: 12px; padding: 16px 20px; margin: 16px 0; }
+.success-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--green); margin-bottom: 6px; }
+
+/* Bar chart */
+.bar-chart { margin: 16px 0; }
+.bar-row { display: flex; align-items: center; margin-bottom: 8px; }
+.bar-label { width: 140px; font-size: 12px; color: var(--text2); flex-shrink: 0; }
+.bar-track { flex: 1; height: 24px; background: var(--surface2); border-radius: 6px; overflow: hidden; position: relative; }
+.bar-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 8px; font-size: 11px; font-weight: 600; color: #fff; transition: width 0.8s ease; }
+.bar-value { margin-left: 8px; font-size: 12px; color: var(--text2); flex-shrink: 0; width: 60px; }
+
+/* Checklist */
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; display: flex; align-items: flex-start; gap: 8px; }
+.checklist li::before { content: ''; display: inline-block; width: 16px; height: 16px; border: 2px solid var(--border); border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); }
+  .hamburger { display: block; }
+  .main { margin-left: 0; padding: 60px 20px; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .card-grid { grid-template-columns: 1fr; }
+  pre { font-size: 11px; }
+}
+</style>
+</head>
+<body>
+
+<button class="hamburger" onclick="document.querySelector('.sidebar').classList.toggle('open')">&#9776;</button>
+
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <h2>Enterprise AI GTM</h2>
+    <p>Аналитика для MWS &middot; 2024-2026</p>
+  </div>
+
+  <div class="nav-group">
+    <div class="nav-group-title">Part I &mdash; Глобальный анализ</div>
+    <a class="nav-link" href="#summary">Executive Summary</a>
+    <a class="nav-link" href="#gtm">1. GTM-модели</a>
+    <a class="nav-link" href="#teams">2. Структуры команд</a>
+    <a class="nav-link" href="#entry">3. Точки входа</a>
+    <a class="nav-link" href="#pricing">4. Ценообразование</a>
+    <a class="nav-link" href="#geo">5. География</a>
+    <a class="nav-link" href="#failures">6. Провалы и риски</a>
+    <a class="nav-link" href="#mws">7. Применимость для MWS</a>
+  </div>
+
+  <div class="nav-group">
+    <div class="nav-group-title">Part II &mdash; Доработка</div>
+    <a class="nav-link" href="#tam">8. TAM / SAM / SOM <span class="badge badge-new">NEW</span></a>
+    <a class="nav-link" href="#unit">9. Unit Economics <span class="badge badge-new">NEW</span></a>
+    <a class="nav-link" href="#competitive">10. Competitive Timeline <span class="badge badge-new">NEW</span></a>
+    <a class="nav-link" href="#infra">11. AI-инфраструктура РФ <span class="badge badge-new">NEW</span></a>
+    <a class="nav-link" href="#legal">12. Legal / 152-ФЗ <span class="badge badge-warn">!</span></a>
+    <a class="nav-link" href="#landscape">13. Конкуренты РФ <span class="badge badge-new">NEW</span></a>
+    <a class="nav-link" href="#revisions">14. Ревизия аргументов</a>
+    <a class="nav-link" href="#roi">15. ROI для CFO <span class="badge badge-new">NEW</span></a>
+    <a class="nav-link" href="#first10">16. Первые 10 клиентов <span class="badge badge-new">NEW</span></a>
+  </div>
+
+  <div class="nav-group">
+    <div class="nav-group-title">Приложения</div>
+    <a class="nav-link" href="#checklist">Checklist 90 дней</a>
+  </div>
+</nav>
+
+<div class="main">
+
+<!-- HERO -->
+<div class="hero" id="summary">
+  <h1>Enterprise AI GTM:<br>Модели, Команды, Продукты, Цены</h1>
+  <p class="subtitle">Как AI-компании заходят в enterprise — и что из этого применимо для MWS в России</p>
+</div>
+
+<div class="stats">
+  <div class="stat-card accent"><div class="number">$37B</div><div class="label">Enterprise AI market (2025)</div></div>
+  <div class="stat-card red"><div class="number">95%</div><div class="label">AI investments = zero EBIT impact</div></div>
+  <div class="stat-card orange"><div class="number">40%</div><div class="label">AI startups failed in 24 months</div></div>
+  <div class="stat-card green"><div class="number">12-18m</div><div class="label">Window of opportunity для MWS</div></div>
+  <div class="stat-card cyan"><div class="number">$6.3B</div><div class="label">Russia AI market (2025)</div></div>
+</div>
+
+<blockquote>
+  <strong>Ключевой вывод:</strong> Победители рынка решают не технологическую, а adoption-проблему. Выигрывают те, кто (1) сужает точку входа до конкретного workflow, (2) доказывает ROI в первые 30 дней, (3) строит data moat через интеграции. В России — дополнительное окно из-за санкций, отсутствия Glean/M365 Copilot и обязательной data localization.
+</blockquote>
+
+<!-- 1. GTM MODELS -->
+<section id="gtm">
+<h2>1. GTM-модели: Что работает, что нет</h2>
+
+<div class="card-grid">
+  <div class="card">
+    <h4>FDE (Forward Deployed Engineering)</h4>
+    <p>Инженеры вендора встраиваются в команду клиента. OpenAI: $350-630K comp. Рост вакансий +1,165%.</p>
+    <p><strong>Palantir:</strong> $2.3B убытков до прибыльности. AIP bootcamps (75% конверсия) — реальный pivot.</p>
+    <span class="tag tag-risky">Не для стартапов (ACV &lt;$500K)</span>
+  </div>
+  <div class="card">
+    <h4>Consulting Alliances</h4>
+    <p>OpenAI + Accenture/McKinsey/BCG. Accenture: $2.7B GenAI revenue, 77K AI pros.</p>
+    <p><strong>Проблема:</strong> Non-exclusive. Accenture работает со всеми.</p>
+    <span class="tag tag-mws">Для MWS: 1С-франчайзи, Softline, КРОК</span>
+  </div>
+  <div class="card">
+    <h4>Product-Led Growth</h4>
+    <p>27% AI spend через PLG (4x vs traditional SaaS). Cursor: $0→$2B ARR без sales team.</p>
+    <p><strong>Ограничение:</strong> Только dev-persona. Breaks при deals &gt;$100K.</p>
+    <span class="tag tag-works">Работает для individual adoption</span>
+  </div>
+  <div class="card">
+    <h4>Bootcamp / Workshop</h4>
+    <p>Palantir: 5 дней на реальных данных, 1,300+ bootcamps. OpenAI: 30-60 day pilots, ~100% win rate.</p>
+    <p><strong>Для MWS:</strong> 2-3 часовой workshop — наиболее применимая модель.</p>
+    <span class="tag tag-mws">Best fit для MWS</span>
+  </div>
+  <div class="card">
+    <h4>Agent-First (Skip Copilot)</h4>
+    <p>Sierra ($100M ARR за 7Q), Harvey ($195M), Devin ($73M) — сразу агенты, без copilot-стадии.</p>
+    <p><strong>Для MWS:</strong> HR Q&A = well-defined → agent-first оправдан.</p>
+    <span class="tag tag-works">Для well-defined workflows</span>
+  </div>
+</div>
+
+<div class="verdict">
+  <div class="verdict-title">Вердикт для MWS</div>
+  <p>FDE — преждевременно. PLG — как acquisition канал. <strong>Workshop на реальных данных клиента</strong> — основная GTM. Agent-first для HR Q&A. Партнерства с 1С-интеграторами для масштабирования.</p>
+</div>
+</section>
+
+<!-- 2. TEAMS -->
+<section id="teams">
+<h2>2. Структуры команд</h2>
+
+<h3>OpenAI: эталонная модель</h3>
+<pre>CRO (Denise Dresser)
+├── Head of GTM (Maggie Hott) — 500+ чел за 24 мес
+│   ├── Enterprise AEs (by segment)
+│   ├── Industry ADs (FS, Healthcare, Retail, Manufacturing)
+│   └── Solutions Engineers (pre-sales, 7+ лет)
+├── Head of CS (Vanessa Gatihi) — глобально за 18 мес
+│   ├── AI Success Engineers (8+ лет)
+│   ├── Scaled AI Success Engineers (one-to-many)
+│   └── AI Deployment Managers (workshops)
+├── Head of FDE (Colin Jarvis) — 2→39→52+ чел
+│   └── Forward Deployed Engineers ($350-630K+)
+└── Value Engineering (ROI quantification) ← КРИТИЧНО</pre>
+
+<h3>Минимальная команда для стартапа</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Роль</th><th>Зачем</th><th>Кол-во</th></tr>
+<tr><td>Founder/CEO + Sales</td><td>Первые 10-20 deals = founder-led</td><td>1</td></tr>
+<tr><td>Solutions Engineer / SA</td><td>Пилоты, интеграция, demo</td><td>1-2</td></tr>
+<tr><td>Product Engineer</td><td>Коннекторы, core product</td><td>2-3</td></tr>
+<tr><td>Customer Success</td><td>Post-sale adoption, expansion</td><td>1</td></tr>
+</table>
+</div>
+</section>
+
+<!-- 3. ENTRY POINTS -->
+<section id="entry">
+<h2>3. Продуктовые точки входа</h2>
+
+<h3>Defensibility Score</h3>
+<div class="bar-chart">
+  <div class="bar-row"><span class="bar-label">Cross-system Search</span><div class="bar-track"><div class="bar-fill" style="width:80%;background:linear-gradient(90deg,var(--accent),var(--cyan))">4.0</div></div></div>
+  <div class="bar-row"><span class="bar-label">IT Helpdesk Agent</span><div class="bar-track"><div class="bar-fill" style="width:72%;background:var(--green)">3.6</div></div></div>
+  <div class="bar-row"><span class="bar-label">Expertise Finder</span><div class="bar-track"><div class="bar-fill" style="width:70%;background:var(--green)">3.5</div></div></div>
+  <div class="bar-row"><span class="bar-label">Document Intelligence</span><div class="bar-track"><div class="bar-fill" style="width:68%;background:var(--green)">3.4</div></div></div>
+  <div class="bar-row"><span class="bar-label">AI Onboarding Agent</span><div class="bar-track"><div class="bar-fill" style="width:62%;background:var(--orange)">3.1</div></div></div>
+  <div class="bar-row"><span class="bar-label">Meeting Intelligence</span><div class="bar-track"><div class="bar-fill" style="width:46%;background:var(--orange)">2.3</div></div></div>
+  <div class="bar-row"><span class="bar-label">HR KB (static Q&A)</span><div class="bar-track"><div class="bar-fill" style="width:34%;background:var(--red)">1.7</div></div></div>
+</div>
+
+<h3>Как заходят лидеры</h3>
+<div class="card-grid">
+  <div class="card">
+    <h4>Glean &mdash; $200M ARR</h4>
+    <p><strong>Land:</strong> Enterprise search (Slack + Confluence + Drive + Jira)<br>
+    <strong>Expand:</strong> AI assistant → workflow agents<br>
+    <strong>Moat:</strong> Knowledge Graph (не RAG)<br>
+    <strong>Deal:</strong> $60K → $500K+ за 9 мес</p>
+  </div>
+  <div class="card">
+    <h4>Moveworks &mdash; $2.85B exit</h4>
+    <p><strong>Land:</strong> IT helpdesk auto-resolution (40-60% L1)<br>
+    <strong>Expand:</strong> IT → HR → Finance → Facilities<br>
+    <strong>Proof:</strong> Databricks: 73% deflection, NPS 30→70</p>
+  </div>
+</div>
+
+<h3>Copilot vs Agent vs Search</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Модель</th><th>Когда</th><th>Risk</th><th>Пример</th></tr>
+<tr><td><strong>Copilot</strong></td><td>Ambiguous process, human judgment</td><td>Shelfware (40-70% unused)</td><td>M365 Copilot</td></tr>
+<tr><td><strong>Agent</strong></td><td>Well-defined, clear metrics</td><td>40%+ projects canceled</td><td>Sierra, Harvey</td></tr>
+<tr><td><strong>Search</strong></td><td>Fragmented info, many sources</td><td>Cold-start (10+ connectors)</td><td>Glean</td></tr>
+</table>
+</div>
+
+<div class="warning">
+  <div class="warning-title">Cautionary Tale: M365 Copilot</div>
+  <p>15M seats, но 3.3% от 450M подписчиков. 40-70% лицензий не используются. Big-bang rollout: 12-22% DAU. Когда выбирают: 76% предпочитают ChatGPT.</p>
+</div>
+</section>
+
+<!-- 4. PRICING -->
+<section id="pricing">
+<h2>4. Ценообразование</h2>
+
+<h3>Модели и тренды</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Модель</th><th>Доля</th><th>Тренд</th><th>Пример</th></tr>
+<tr><td>Per-seat</td><td>21% → 15%</td><td style="color:var(--red)">&#x2193;</td><td>Harvey: $1,200/lawyer/mo</td></tr>
+<tr><td><strong>Hybrid</strong></td><td><strong>27% → 41%</strong></td><td style="color:var(--green)">&#x2191;&#x2191;</td><td>Salesforce: 3 модели</td></tr>
+<tr><td>Outcome-based</td><td>Растет</td><td style="color:var(--green)">&#x2191;</td><td>Sierra: per resolution</td></tr>
+<tr><td>Credit/consumption</td><td>+126% YoY</td><td style="color:var(--green)">&#x2191;</td><td>Devin: $2.25/ACU</td></tr>
+</table>
+</div>
+
+<h3>Pricing по компаниям</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Компания</th><th>Модель</th><th>Unit</th><th>Framing</th></tr>
+<tr><td>Sierra</td><td>Per resolution</td><td>~$150-350K/year</td><td>"Pay when AI solves"</td></tr>
+<tr><td>Harvey</td><td>Per-seat</td><td>$1,200/lawyer/mo</td><td>"Cost of junior associate"</td></tr>
+<tr><td>Devin</td><td>Per compute-hour</td><td>$2.25/ACU (~$8-9/hr)</td><td>"Cost of engineer-hour"</td></tr>
+<tr><td>Salesforce</td><td>Hybrid x3</td><td>$2/conv, $0.10/action, $125/seat</td><td>"Digital labor"</td></tr>
+<tr><td>Glean</td><td>Per-seat</td><td>$50+/user/mo</td><td>"Employee assistant"</td></tr>
+</table>
+</div>
+
+<div class="verdict">
+  <div class="verdict-title">Для MWS</div>
+  <p>Per-seat (100-300 руб/чел/мес) для начала — проще считать, понятнее CFO. Outcome-компонент (per resolved ticket) как upsell. "Digital labor" framing при продаже CHRO.</p>
+</div>
+</section>
+
+<!-- 5. GEOGRAPHY -->
+<section id="geo">
+<h2>5. География</h2>
+
+<div class="table-wrap">
+<table>
+<tr><th>Регион</th><th>GTM-модель</th><th>Специфика</th><th>Рынок</th></tr>
+<tr><td><strong>США</strong></td><td>PLG + FDE + alliances</td><td>Direct sales, fast cycles</td><td>$37B</td></tr>
+<tr><td><strong>Китай</strong></td><td>Platform + tender + price war</td><td>DingTalk/Feishu bundling</td><td>$21.6B → $202B</td></tr>
+<tr><td><strong>Европа</strong></td><td>Sovereign stack + compliance</td><td>GDPR/AI Act, sovereignty</td><td>~$120B</td></tr>
+<tr><td><strong>Бл. Восток</strong></td><td>Sovereign fund mandate</td><td>Buyer = investor = government</td><td>$72.7B infra</td></tr>
+<tr><td><strong>Япония</strong></td><td>SIer bundling</td><td>No direct-to-enterprise</td><td>$135B infra</td></tr>
+<tr><td><strong>Россия</strong></td><td>152-ФЗ + import subst.</td><td>1С/Битрикс24 dominant</td><td>$6.3B → $47.5B</td></tr>
+</table>
+</div>
+
+<h3>СНГ Expansion Potential</h3>
+<div class="stats">
+  <div class="stat-card accent"><div class="number">$1.8B</div><div class="label">Казахстан AI (2030)</div></div>
+  <div class="stat-card accent"><div class="number">$1.25B</div><div class="label">Узбекистан AI (2030)</div></div>
+  <div class="stat-card accent"><div class="number">$3.95B</div><div class="label">Турция AI (2030)</div></div>
+</div>
+</section>
+
+<!-- 6. FAILURES -->
+<section id="failures">
+<h2>6. Провалы и риски</h2>
+
+<div class="card-grid">
+  <div class="card" style="border-color:rgba(248,113,113,0.3)">
+    <h4>Jasper AI</h4>
+    <p>$120M → $35-55M ARR (-54%). ChatGPT сделал "GPT-3 wrapper" obsolete.</p>
+  </div>
+  <div class="card" style="border-color:rgba(248,113,113,0.3)">
+    <h4>Inflection AI</h4>
+    <p>$1.5B raised → MS hired CEO + all staff. Нужно было ещё $2B.</p>
+  </div>
+  <div class="card" style="border-color:rgba(248,113,113,0.3)">
+    <h4>IBM Watson</h4>
+    <p>$5B, 7,000 чел. Oncology: trained on 1 hospital, couldn't generalize.</p>
+  </div>
+  <div class="card" style="border-color:rgba(248,113,113,0.3)">
+    <h4>M365 Copilot</h4>
+    <p>40-70% лицензий не используются. 76% выбирают ChatGPT вместо.</p>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat-card red"><div class="number">95%</div><div class="label">AI investments = zero EBIT (MIT)</div></div>
+  <div class="stat-card red"><div class="number">42%</div><div class="label">Abandoned AI initiatives (2025)</div></div>
+  <div class="stat-card orange"><div class="number">26.7%</div><div class="label">CFOs plan to raise AI budgets (was 53%)</div></div>
+  <div class="stat-card red"><div class="number">40%+</div><div class="label">Agentic projects will be canceled (Gartner)</div></div>
+</div>
+</section>
+
+<!-- 7. MWS -->
+<section id="mws">
+<h2>7. Применимость для MWS</h2>
+
+<h3>GTM-стратегия по фазам</h3>
+<div class="timeline">
+  <div class="timeline-item success"><div class="time">Phase 1: Land (мес. 1-6)</div><div class="desc">HR KB agent-first + workshops на данных клиента. Per-seat pricing. Target: mid-market 500-5000 на Битрикс24/1С.</div></div>
+  <div class="timeline-item"><div class="time">Phase 2: Expand (мес. 6-18)</div><div class="desc">HR → IT helpdesk → internal search. Коннекторы: 1С, Битрикс24, Telegram. Knowledge Graph.</div></div>
+  <div class="timeline-item"><div class="time">Phase 3: Defensible (мес. 18-36)</div><div class="desc">Cross-system search + permission-aware connectors = moat. СНГ expansion. Partner program.</div></div>
+</div>
+
+<h3>Чего избегать</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Anti-pattern</th><th>Почему</th><th>Кто пострадал</th></tr>
+<tr><td>"GPT wrapper" без data moat</td><td>Один релиз Sber/Yandex убивает</td><td>Jasper AI (-54%)</td></tr>
+<tr><td>FDE на ранней стадии</td><td>Unit economics collapse</td><td>95%+ стартапов</td></tr>
+<tr><td>Big-bang rollout</td><td>12-22% DAU vs 65-78%</td><td>M365 Copilot</td></tr>
+<tr><td>"Horizontal AI assistant"</td><td>= shelfware</td><td>M365 Copilot</td></tr>
+</table>
+</div>
+</section>
+
+<!-- ===== PART II ===== -->
+
+<div style="margin:64px 0 32px;padding:24px;background:linear-gradient(135deg,rgba(99,102,241,0.1),rgba(34,211,238,0.1));border:1px solid rgba(99,102,241,0.2);border-radius:16px;text-align:center;">
+  <h2 style="border:none;margin:0;padding:0;font-size:20px;">Part II: Доработка по результатам Challenge</h2>
+  <p style="color:var(--text2);font-size:13px;margin-top:8px;">TAM/SAM/SOM, Unit Economics, Competitive Timeline, Инфраструктура, Legal, Первые клиенты</p>
+</div>
+
+<!-- 8. TAM -->
+<section id="tam">
+<h2>8. TAM / SAM / SOM для MWS в России</h2>
+
+<h3>Российский HR Tech</h3>
+<div class="bar-chart">
+  <div class="bar-row"><span class="bar-label">HCM / HRIS (1С:ЗУП)</span><div class="bar-track"><div class="bar-fill" style="width:38%;background:var(--accent)">~37%</div></div></div>
+  <div class="bar-row"><span class="bar-label">Payroll & compliance</span><div class="bar-track"><div class="bar-fill" style="width:23%;background:var(--accent)">~22%</div></div></div>
+  <div class="bar-row"><span class="bar-label">ATS (рекрутинг)</span><div class="bar-track"><div class="bar-fill" style="width:17%;background:var(--accent)">~17%</div></div></div>
+  <div class="bar-row"><span class="bar-label">LMS / e-learning</span><div class="bar-track"><div class="bar-fill" style="width:11%;background:var(--accent)">~11%</div></div></div>
+  <div class="bar-row"><span class="bar-label">AI-powered HR</span><div class="bar-track"><div class="bar-fill" style="width:5%;background:var(--cyan)">~4%</div></div></div>
+</div>
+
+<h3>TAM → SAM → SOM</h3>
+<div class="stats">
+  <div class="stat-card accent"><div class="number">13B &#8381;</div><div class="label">TAM: весь HR Tech РФ (2025)</div></div>
+  <div class="stat-card cyan"><div class="number">0.7-1.5B &#8381;</div><div class="label">TAM: AI HR subset</div></div>
+  <div class="stat-card green"><div class="number">3-9B &#8381;</div><div class="label">SAM: Mid-market + 1С/Битрикс24</div></div>
+  <div class="stat-card orange"><div class="number">12-72M &#8381;</div><div class="label">SOM Year 1 (реалистичный)</div></div>
+</div>
+
+<div class="warning">
+  <div class="warning-title">Честная оценка</div>
+  <p>AI-powered HR subset = $7-15M. Это рынок одного раунда финансирования. CAGR 35% впечатляет, абсолютные цифры — нет. MWS должен думать о workplace AI шире, чем только HR. Реально в Year 1: 10-20 клиентов, не 100.</p>
+</div>
+
+<h3>Проникновение платформ (500-5000 чел)</h3>
+<div class="bar-chart">
+  <div class="bar-row"><span class="bar-label">1С (любой)</span><div class="bar-track"><div class="bar-fill" style="width:88%;background:var(--green)">85-90%</div></div></div>
+  <div class="bar-row"><span class="bar-label">1С:ЗУП (HR)</span><div class="bar-track"><div class="bar-fill" style="width:65%;background:var(--green)">60-70%</div></div></div>
+  <div class="bar-row"><span class="bar-label">Битрикс24</span><div class="bar-track"><div class="bar-fill" style="width:30%;background:var(--orange)">25-35%</div></div></div>
+</div>
+</section>
+
+<!-- 9. UNIT ECONOMICS -->
+<section id="unit">
+<h2>9. Unit Economics / P&L модель</h2>
+
+<h3>AI SaaS vs Traditional SaaS</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Категория</th><th>Traditional SaaS</th><th>AI SaaS (RAG/LLM)</th></tr>
+<tr><td>COGS / Inference</td><td>20-25%</td><td style="color:var(--red)"><strong>30-50%</strong></td></tr>
+<tr><td>R&D / Engineering</td><td>20-30%</td><td style="color:var(--red)"><strong>35-50%</strong></td></tr>
+<tr><td>Sales & Marketing</td><td>25-40%</td><td>20-35%</td></tr>
+<tr><td>Operating Margin</td><td>-20% to -50%</td><td style="color:var(--red)"><strong>-50% to -100%+</strong></td></tr>
+</table>
+</div>
+
+<h3>Gross Margins</h3>
+<div class="bar-chart">
+  <div class="bar-row"><span class="bar-label">MWS target</span><div class="bar-track"><div class="bar-fill" style="width:75%;background:linear-gradient(90deg,var(--accent),var(--cyan))">70-80%</div></div></div>
+  <div class="bar-row"><span class="bar-label">Writer</span><div class="bar-track"><div class="bar-fill" style="width:70%;background:var(--green)">65-75%</div></div></div>
+  <div class="bar-row"><span class="bar-label">Glean</span><div class="bar-track"><div class="bar-fill" style="width:68%;background:var(--green)">65-70%</div></div></div>
+  <div class="bar-row"><span class="bar-label">Sierra</span><div class="bar-track"><div class="bar-fill" style="width:65%;background:var(--green)">60-70%</div></div></div>
+  <div class="bar-row"><span class="bar-label">Harvey</span><div class="bar-track"><div class="bar-fill" style="width:60%;background:var(--orange)">55-65%</div></div></div>
+  <div class="bar-row"><span class="bar-label">Cursor</span><div class="bar-track"><div class="bar-fill" style="width:55%;background:var(--orange)">50-60%</div></div></div>
+</div>
+
+<div class="success-box">
+  <div class="success-title">Margin advantage MWS</div>
+  <p>On-prem open-source models: $0.01-0.03/1K tokens vs $0.01-0.06 у OpenAI API. Нет зависимости от API pricing. Russian labor costs ниже (ML: 300-600K руб/мес vs $25-40K в US).</p>
+</div>
+
+<h3>P&L Model: MWS Year 1-3</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Метрика</th><th>Year 1</th><th>Year 2</th><th>Year 3</th></tr>
+<tr><td>Clients</td><td>10-15</td><td>35-60</td><td>80-120</td></tr>
+<tr><td>ARR</td><td>$250-375K</td><td>$875K-1.5M</td><td>$2-3M</td></tr>
+<tr><td>Gross Margin</td><td>55-65%</td><td>60-70%</td><td>65-75%</td></tr>
+<tr><td>Monthly Burn</td><td style="color:var(--red)">$30-50K</td><td style="color:var(--orange)">$25-50K</td><td style="color:var(--green)">~breakeven</td></tr>
+<tr><td>Team</td><td>8-12</td><td>15-20</td><td>25-35</td></tr>
+</table>
+</div>
+<p><strong>Breakeven:</strong> ~80-100 клиентов при ACV $25K. Seed round 50-100M руб = 18-24 мес runway.</p>
+</section>
+
+<!-- 10. COMPETITIVE TIMELINE -->
+<section id="competitive">
+<h2>10. Competitive Response Timeline</h2>
+
+<h3>Текущие позиции</h3>
+<div class="table-wrap">
+<table>
+<tr><th></th><th>GigaChat (Sber)</th><th>YandexGPT</th><th>MWS target</th></tr>
+<tr><td><strong>Фокус</strong></td><td>Banking, fintech</td><td>Cloud infra, horizontal</td><td style="color:var(--cyan)">HR/workplace vertical</td></tr>
+<tr><td><strong>Deploy</strong></td><td>On-prem/cloud/hybrid</td><td>Cloud-only</td><td>On-prem/cloud</td></tr>
+<tr><td><strong>HR product</strong></td><td style="color:var(--red)">Нет</td><td style="color:var(--red)">Нет (generic KB)</td><td style="color:var(--green)">Core focus</td></tr>
+<tr><td><strong>1С integration</strong></td><td style="color:var(--green)">Есть</td><td style="color:var(--red)">Нет</td><td style="color:var(--orange)">Нужно строить</td></tr>
+<tr><td><strong>Cross-system search</strong></td><td style="color:var(--red)">Нет</td><td style="color:var(--red)">Нет</td><td style="color:var(--orange)">Target Phase 2-3</td></tr>
+</table>
+</div>
+
+<h3>Window of Opportunity</h3>
+<pre style="font-size:13px;line-height:1.6">
+Сейчас          6 мес          12 мес          18 мес          24 мес
+  |──────────────|──────────────|──────────────|──────────────|
+  |              |              |              |              |
+  | MVP +        | 10-20        | 50+ clients  | Knowledge    |
+  | first 5      | clients +    | + connectors | graph moat   |
+  | clients      | 1C connector | built        | OR commodity |
+  |              |              |              |              |
+  |  Yandex HR templates?      | Sber react?  | 1C react?    |
+</pre>
+
+<h3>Сценарии</h3>
+<div class="card-grid">
+  <div class="card"><h4>Sber HR AI <span style="color:var(--orange)">30-40%</span></h4><p>12-18 мес от решения. Trigger: MWS докажет PMF с 50+ клиентами. Слабость: bureaucracy, "bank not HR vendor".</p></div>
+  <div class="card"><h4>Yandex HR templates <span style="color:var(--red)">40-50%</span></h4><p>6-12 мес. Obvious use case. Слабость: cloud-only, нет 1С/Битрикс24, generic.</p></div>
+  <div class="card"><h4>1С AI module <span style="color:var(--orange)">20-30%</span></h4><p>18-24 мес. Legacy tech, нет ML. Franchise model фрагментирует R&D.</p></div>
+  <div class="card"><h4>Стартап-конкурент <span style="color:var(--red)">50-60%</span></h4><p>Already happening. AutoFAQ, chatbots. Слабость: GPT-wrapper, low moat.</p></div>
+</div>
+</section>
+
+<!-- 11. INFRA -->
+<section id="infra">
+<h2>11. Российская AI-инфраструктура</h2>
+
+<h3>Доступные LLM</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Модель</th><th>Deploy</th><th>Pricing (руб/1K tok)</th><th>vs GPT-4</th></tr>
+<tr><td><strong>GigaChat Pro</strong></td><td>Cloud + on-prem</td><td>In ~3.5, Out ~10</td><td>-10-15pp</td></tr>
+<tr><td><strong>YandexGPT Pro</strong></td><td>Cloud only</td><td>In ~6, Out ~12</td><td>-15-20pp</td></tr>
+<tr><td><strong>Llama 3 70B</strong></td><td>On-prem</td><td>HW amortization</td><td>-13-18pp</td></tr>
+<tr><td><strong>Saiga (fine-tuned)</strong></td><td>On-prem</td><td>HW amortization</td><td>RU-optimized</td></tr>
+</table>
+</div>
+
+<h3>On-Prem конфигурации</h3>
+<div class="card-grid">
+  <div class="card" style="border-color:rgba(52,211,153,0.3)">
+    <h4>Бюджетный: 1.5-2M &#8381;</h4>
+    <p>2x RTX 4090 + 128GB RAM + 2TB NVMe<br>Mistral 7B quantized + Qdrant<br>Достаточно для HR Q&A</p>
+    <span class="tag tag-mws">Рекомендовано для старта</span>
+  </div>
+  <div class="card">
+    <h4>Production: 15-25M &#8381;</h4>
+    <p>4x A100 80GB + 256GB RAM + 4TB NVMe<br>Llama 3 70B + full RAG stack<br>Grey market pricing</p>
+  </div>
+</div>
+
+<div class="warning">
+  <div class="warning-title">GPU Constraint</div>
+  <p>NVIDIA H100/A100 официально запрещены (BIS). Grey market: 2-4x MSRP. Все cloud-провайдеры работают с конечным запасом. Supply ceiling ужесточается.</p>
+</div>
+</section>
+
+<!-- 12. LEGAL -->
+<section id="legal">
+<h2>12. Legal / Compliance (152-ФЗ)</h2>
+
+<h3>Что является ПД в HR-контексте</h3>
+<p>ФИО, паспорт, СНИЛС, ИНН, адрес, телефон, email, трудовая история, должность, зарплата, образование. <strong style="color:var(--red)">Медданные (больничные) = СПЕЦИАЛЬНАЯ КАТЕГОРИЯ</strong> (ст. 10 — явное письменное согласие).</p>
+
+<h3>Штрафы (ред. 2024)</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Нарушение</th><th>Первый раз</th><th>Повторно</th></tr>
+<tr><td>Отсутствие локализации ПД</td><td>1-6M руб</td><td>6-18M руб</td></tr>
+<tr><td>Обработка без согласия</td><td>300-700K руб</td><td>до 1.5M руб</td></tr>
+<tr><td style="color:var(--red)">Утечка (100K+ субъектов)</td><td style="color:var(--red)">до 500M руб</td><td style="color:var(--red)">+ уголовная</td></tr>
+</table>
+</div>
+
+<h3>Кто отвечает за ошибки AI-бота</h3>
+<p><strong>Работодатель</strong> (ТК РФ, ст. 22) — основная ответственность. Вендор — по договору. Специального закона об AI liability в РФ <strong>нет</strong>. Судебных прецедентов по AI HR-ботам нет.</p>
+
+<div class="success-box">
+  <div class="success-title">Рекомендации для MWS</div>
+  <ul style="margin:0">
+    <li>Disclaimer в каждом ответе: "справочный характер"</li>
+    <li>В договоре: AI = информирование, НЕ юр. консультация</li>
+    <li>Test suite на базе ТК РФ для валидации accuracy</li>
+    <li>Logging всех ответов для audit trail</li>
+    <li><strong>НИКОГДА</strong> автоматические решения (увольнение, отказ)</li>
+  </ul>
+</div>
+</section>
+
+<!-- 13. LANDSCAPE -->
+<section id="landscape">
+<h2>13. Конкурентный ландшафт России</h2>
+
+<h3>Прямые конкуренты</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Компания</th><th>Продукт</th><th>Pricing</th><th>AI</th></tr>
+<tr><td>AutoFAQ</td><td>AI KB + chatbot</td><td>30-150K руб/мес</td><td>RAG на внешних LLM</td></tr>
+<tr><td>HRlink</td><td>КЭДО</td><td>200 руб/чел/мес</td><td>AI добавляется</td></tr>
+<tr><td>Sever.AI</td><td>AI recruiting</td><td>50-200K руб/мес</td><td>Resume screening</td></tr>
+<tr><td>ELMA365</td><td>BPM + AI</td><td>500 руб/чел/мес</td><td>AI в BPM</td></tr>
+</table>
+</div>
+
+<h3>Что НЕ закрыто никем</h3>
+<div class="card-grid">
+  <div class="card" style="border-color:rgba(52,211,153,0.3)">
+    <h4>Cross-system search</h4>
+    <p>1С + Битрикс24 + Telegram + files. Glean не в РФ. Никто не делает.</p>
+    <span class="tag tag-mws">GAP = opportunity</span>
+  </div>
+  <div class="card" style="border-color:rgba(52,211,153,0.3)">
+    <h4>Compliance-grade HR AI</h4>
+    <p>AI с валидацией по ТК РФ. AutoFAQ = generic, не HR-specific.</p>
+    <span class="tag tag-mws">GAP = opportunity</span>
+  </div>
+  <div class="card" style="border-color:rgba(52,211,153,0.3)">
+    <h4>Permission-aware Knowledge Graph</h4>
+    <p>Across 1С + Битрикс24. Требует deep integration. Никто не строит.</p>
+    <span class="tag tag-mws">GAP = long-term moat</span>
+  </div>
+</div>
+</section>
+
+<!-- 14. REVISIONS -->
+<section id="revisions">
+<h2>14. Ревизия слабых аргументов</h2>
+
+<div class="card-grid">
+  <div class="card">
+    <h4>Scoring Matrix</h4>
+    <p><strong>Было:</strong> Cross-system search = 4.0 = best entry.<br><strong>Стало:</strong> Score = DESTINATION defensibility, не starting point. Start low-moat/fast (HR KB), move to high-moat за 18 мес.</p>
+  </div>
+  <div class="card">
+    <h4>"Palantir bootcamp light"</h4>
+    <p><strong>Было:</strong> 5-day bootcamp, 75% conversion.<br><strong>Стало:</strong> 2-3 часовой workshop. Target conversion: 30-40%, не 75%.</p>
+  </div>
+  <div class="card">
+    <h4>"Российское окно"</h4>
+    <p><strong>Было:</strong> Санкции помогают.<br><strong>Стало:</strong> Окно реальное, но потому что западные не зайдут + Sber/Yandex = horizontal. Нужен Реестр отечественного ПО.</p>
+  </div>
+  <div class="card">
+    <h4>Competitive Diagram</h4>
+    <p><strong>Было:</strong> MWS = sweet spot.<br><strong>Стало:</strong> Year 1: рядом с AutoFAQ. Year 3: sweet spot ТОЛЬКО если connectors + knowledge graph built.</p>
+  </div>
+</div>
+</section>
+
+<!-- 15. ROI -->
+<section id="roi">
+<h2>15. ROI Narrative для CFO</h2>
+
+<h3>ROI калькулятор (компания 1,500 чел)</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Метрика</th><th>Без MWS</th><th>С MWS</th><th>Delta</th></tr>
+<tr><td>Автоматизация запросов</td><td>0%</td><td>50-70%</td><td style="color:var(--green)">&#x2191;</td></tr>
+<tr><td>FTE на обработку</td><td>3</td><td>1-1.5</td><td style="color:var(--green)">-1.5-2 FTE</td></tr>
+<tr><td>Время ответа</td><td>2-48 часов</td><td>&lt;1 мин</td><td style="color:var(--green)">99%&#x2193;</td></tr>
+<tr><td>Ошибки в ответах</td><td>5-15%</td><td>&lt;3%</td><td style="color:var(--green)">60-80%&#x2193;</td></tr>
+<tr><td><strong>Экономия/мес</strong></td><td></td><td></td><td style="color:var(--green)"><strong>150-300K руб</strong></td></tr>
+</table>
+</div>
+
+<div class="stats">
+  <div class="stat-card green"><div class="number">6-12 мес</div><div class="label">Payback period</div></div>
+  <div class="stat-card green"><div class="number">1.5-2</div><div class="label">FTE экономия</div></div>
+  <div class="stat-card cyan"><div class="number">150-300K</div><div class="label">руб/мес экономия</div></div>
+</div>
+
+<blockquote>"Мы не заменяем HR. Мы убираем 50-70% рутинных запросов, чтобы HR занимался стратегическими задачами."</blockquote>
+
+<h3>Метрики первых 30 дней</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Метрика</th><th>Target</th></tr>
+<tr><td>Time-to-first-value</td><td>&lt;7 дней</td></tr>
+<tr><td>DAU к Day 30</td><td>&gt;30%</td></tr>
+<tr><td>Auto-resolution rate</td><td>&gt;40%</td></tr>
+<tr><td>User satisfaction</td><td>&gt;4.0/5</td></tr>
+<tr><td>Accuracy</td><td>&gt;95%</td></tr>
+</table>
+</div>
+</section>
+
+<!-- 16. FIRST 10 -->
+<section id="first10">
+<h2>16. Первые 10 клиентов: Playbook</h2>
+
+<h3>Как это делали другие</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Компания</th><th>Метод</th><th>Timeline</th></tr>
+<tr><td>Glean</td><td>Founder network + Sequoia portfolio</td><td>14-16 мес до 10 paying</td></tr>
+<tr><td>Harvey</td><td>YC + OpenAI access. A&O = breakout reference</td><td>4-5 мес до A&O</td></tr>
+<tr><td>Cursor</td><td>Zero sales. PLG: devs at $20/mo</td><td>$0→$100M за ~2 года</td></tr>
+<tr><td>Sever.AI <small>(РФ)</small></td><td>HR Tech конференции + free pilots</td><td>1-3 мес pilot cycle</td></tr>
+<tr><td>HRlink <small>(РФ)</small></td><td>Regulatory push (КЭДО) + 1С-интеграция</td><td>2-4 мес sales cycle</td></tr>
+</table>
+</div>
+
+<h3>Что убивает early deals</h3>
+<div class="bar-chart">
+  <div class="bar-row"><span class="bar-label">Нет exec sponsor</span><div class="bar-track"><div class="bar-fill" style="width:30%;background:var(--red)">~30%</div></div></div>
+  <div class="bar-row"><span class="bar-label">Accuracy issues</span><div class="bar-track"><div class="bar-fill" style="width:25%;background:var(--red)">~25%</div></div></div>
+  <div class="bar-row"><span class="bar-label">IT blocks integration</span><div class="bar-track"><div class="bar-fill" style="width:20%;background:var(--orange)">~20%</div></div></div>
+  <div class="bar-row"><span class="bar-label">Champion leaves</span><div class="bar-track"><div class="bar-fill" style="width:10%;background:var(--orange)">~10%</div></div></div>
+  <div class="bar-row"><span class="bar-label">No ROI story</span><div class="bar-track"><div class="bar-fill" style="width:10%;background:var(--orange)">~10%</div></div></div>
+</div>
+
+<h3>План по месяцам</h3>
+<div class="timeline">
+  <div class="timeline-item success"><div class="time">Month 1-2: Foundation</div><div class="desc">Список personal connections (30-50). Telegram-канал. Promo pilot: загрузить публичные HR-документы 5 target-компаний.</div></div>
+  <div class="timeline-item"><div class="time">Month 2-3: Design Partners</div><div class="desc">10-15 outreach → 5-7 meetings → 3-5 design partners. Workshop (2-3 ч) на реальных данных.</div></div>
+  <div class="timeline-item"><div class="time">Month 3-5: Pilots</div><div class="desc">3-5 structured pilots (2-4 нед, 50-100 users). Weekly ROI reports. Meet exec sponsors.</div></div>
+  <div class="timeline-item"><div class="time">Month 5-7: Conversion</div><div class="desc">Convert 2-3 pilots to paid. 100-300 руб/чел/мес, quarterly billing. Get reference commitments.</div></div>
+  <div class="timeline-item success"><div class="time">Month 7-10: Referral + Events</div><div class="desc">5-10 warm intros from clients. Speak at HR Tech Russia / ЦИПР. Target: 7-10 paying.</div></div>
+</div>
+
+<h3>Российская специфика</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Фактор</th><th>Россия</th><th>США</th></tr>
+<tr><td>Relationships</td><td style="color:var(--red)"><strong>Критично.</strong> Trust-first culture</td><td>Product can compensate</td></tr>
+<tr><td>First meeting</td><td><strong>In-person</strong> предпочтительнее</td><td>Video call standard</td></tr>
+<tr><td>Payment</td><td>Quarterly. Prepay from unknown = rare</td><td>Annual prepay common</td></tr>
+<tr><td>References</td><td style="color:var(--red)"><strong>Same-industry = решающий</strong></td><td>Important not blocking</td></tr>
+<tr><td>Certification</td><td><strong>Реестр отечественного ПО</strong></td><td>SOC 2 / ISO</td></tr>
+</table>
+</div>
+
+<p><strong>Top каналы (по убыванию):</strong> Personal intro → Industry conference → Telegram community → LinkedIn → Cold email</p>
+</section>
+
+<!-- CHECKLIST -->
+<section id="checklist">
+<h2>Checklist: Первые 90 дней</h2>
+<ul class="checklist">
+  <li>Подать на включение в Реестр отечественного ПО (Минцифры)</li>
+  <li>Развернуть MVP на on-prem (2x RTX 4090 + Mistral/Saiga + Qdrant)</li>
+  <li>Загрузить ТК РФ + типовые HR-документы как base knowledge</li>
+  <li>Построить 1С:ЗУП connector (read-only: оргструктура, данные сотрудников)</li>
+  <li>Провести 5-10 workshops с target companies</li>
+  <li>Закрыть 3-5 pilot agreements (30 дней, nominal fee)</li>
+  <li>Установить метрики для каждого пилота (DAU, resolution rate, satisfaction)</li>
+  <li>Подготовить ROI-отчет для CFO каждого пилотного клиента</li>
+  <li>Запустить Telegram-канал (AI в HR, полезный контент)</li>
+  <li>Начать Битрикс24 connector (Phase 2)</li>
+</ul>
+</section>
+
+<div style="margin-top:64px;padding:24px;border-top:1px solid var(--border);color:var(--text2);font-size:12px;text-align:center;">
+  Enterprise AI GTM Analysis for MWS &middot; April 2026 &middot; Based on 8 raw research files, 4 parallel research agents, critical challenge review
+</div>
+
+</div>
+
+<script>
+// Active nav highlighting
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-link');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const id = entry.target.id;
+      const link = document.querySelector(`.nav-link[href="#${id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+
+// Also observe hero
+const hero = document.querySelector('.hero');
+const heroObs = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) {
+    navLinks.forEach(l => l.classList.remove('active'));
+    const link = document.querySelector('.nav-link[href="#summary"]');
+    if (link) link.classList.add('active');
+  }
+}, { rootMargin: '-10% 0px -80% 0px' });
+heroObs.observe(hero);
+
+// Close sidebar on mobile when link clicked
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 768) {
+      document.querySelector('.sidebar').classList.remove('open');
+    }
+  });
+});
+</script>
+</body>
+</html>
