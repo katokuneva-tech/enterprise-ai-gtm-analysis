@@ -179,10 +179,9 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
     <a class="nav-link" href="#competitive">10. Competitive Timeline <span class="badge badge-new">NEW</span></a>
     <a class="nav-link" href="#infra">11. AI-инфраструктура РФ <span class="badge badge-new">NEW</span></a>
     <a class="nav-link" href="#legal">12. Legal / 152-ФЗ <span class="badge badge-warn">!</span></a>
-    <a class="nav-link" href="#landscape">13. Конкуренты РФ <span class="badge badge-new">NEW</span></a>
-    <a class="nav-link" href="#revisions">14. Ревизия аргументов</a>
-    <a class="nav-link" href="#roi">15. ROI для CFO <span class="badge badge-new">NEW</span></a>
-    <a class="nav-link" href="#first10">16. Первые 10 клиентов <span class="badge badge-new">NEW</span></a>
+    <a class="nav-link" href="#revisions">13. Ревизия аргументов</a>
+    <a class="nav-link" href="#roi">14. ROI для CFO <span class="badge badge-new">NEW</span></a>
+    <a class="nav-link" href="#first10">15. Первые 10 клиентов <span class="badge badge-new">NEW</span></a>
   </div>
 
   <div class="nav-group">
@@ -203,7 +202,7 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
   <div class="stat-card accent"><div class="number">$37 млрд</div><div class="label">Глобальный рынок корпоративного ИИ (2025)</div></div>
   <div class="stat-card red"><div class="number">95%</div><div class="label">ИИ-проектов без влияния на прибыль (MIT, все виды ИИ)</div></div>
   <div class="stat-card orange"><div class="number">40%</div><div class="label">ИИ-стартапов закрылись за 24 мес. (base rate стартапов ~50–60%)</div></div>
-  <div class="stat-card green"><div class="number">6-12 мес.</div><div class="label">Окно до появления конкурентных предложений</div></div>
+  <div class="stat-card red"><div class="number">0 мес.</div><div class="label">Окна нет: Яндекс Нейро Юрист уже на рынке</div></div>
   <div class="stat-card cyan"><div class="number">~300 млрд &#8381;</div><div class="label">Рынок ИИ в России (2025, оценка TAdviser/IDC)</div></div>
 </div>
 
@@ -407,12 +406,17 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 
 <h3>1.7 Рекомендуемая модель для MWS AI: гибрид</h3>
 
+<div class="warning">
+  <div class="warning-title">Глобальный паттерн: Телеком → AI работает только при двух условиях</div>
+  <p>Из 8+ глобальных кейсов (NTT, SK Telecom, Schwarz/Aleph Alpha, G42) телеком-дочка в AI успешна <strong>только когда</strong>: (a) телеком контролирует канал дистрибуции (NTT — SIer-монополия, клиенту некуда деться), или (b) есть государственный мандат (G42 — назначенный национальный чемпион ОАЭ). МТС не контролирует enterprise-IT в России — это территория 1С, Сбера и Яндекса. <strong>Реальный аналог MWS AI — не Harvey, а iFlytek (Китай)</strong>: технологическая дочка (частично государственная), 23,3 млрд юаней выручки, 1 520 тендеров/год, проектные бригады на площадке, вертикализация по отраслям. Модель: тендеры + глубокие интеграции + on-premise. MWS AI должен строить бизнес по этому паттерну, а не по паттерну Кремниевой долины.</p>
+</div>
+
 <div class="success-box">
   <div class="success-title">Итоговая стратегия выхода на рынок</div>
-  <p><strong>Фаза 1 (Q2 2026):</strong> Воркшоп-модель — управляемый запуск Legal Copilot за 1–2 недели в облаке MWS Cloud. Прямые продажи, договор с MWS AI. Цель: 2–3 пилота.</p>
-  <p><strong>Фаза 2 (Q3 2026):</strong> Расширение каталога (HR KB, Enterprise Search, Finance Copilot) + партнёрский канал через B2B Store MWS Cloud и 1С-интеграторов. Цель: 10 клиентов.</p>
-  <p><strong>Фаза 3 (Q4 2026):</strong> Продуктовый рост — пробный период 14 дней, самообслуживание, «белая этикетка» для партнёров. Цель: 30+ клиентов.</p>
-  <p style="margin-top:12px;"><strong>Двухуровневая воронка:</strong> облако — быстрый вход и доказательство ценности → локальное развёртывание — для регулируемых клиентов (банки, госсектор, оборонка), готовых платить премиум за полный контроль данных.</p>
+  <p><strong>Фаза 1 (Q2 2026):</strong> Founder-led продажи Legal Copilot. CEO/CTO лично проводит 20–30 демо с юр. директорами. On-premise развёртывание. Цель: 3–5 design partners (пилотов). При согласовании облака — параллельный запуск на MWS Cloud.</p>
+  <p><strong>Фаза 2 (Q3–Q4 2026):</strong> Конвертация пилотов + 5–7 новых клиентов через рефералы и один публичный кейс. Начало работы с 3–5 крупнейшими 1С-интеграторами (КРОК, Softline, Ланит). Цель: 10–15 клиентов.</p>
+  <p><strong>Фаза 3 (Q1–Q2 2027):</strong> HR KB как второй продукт на существующей базе. Партнёрский канал. Если облако согласовано — пробный период 14 дней, самообслуживание. Цель: 25–40 клиентов.</p>
+  <p style="margin-top:12px;"><strong>Двухуровневая модель (при согласовании облака):</strong> облако — быстрый вход и доказательство ценности → локальное развёртывание — для регулируемых клиентов (банки, госсектор, оборонка), готовых платить премиум за полный контроль данных. Без облака — только прямые продажи, потолок 50–100 клиентов за 3–5 лет.</p>
 </div>
 
 <h3>1.8 География: как модели продаж адаптируются за пределами США</h3>
@@ -1034,7 +1038,13 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 </table>
 </div>
 
-<h3>Окно возможностей: 6–12 месяцев</h3>
+<h3>Окна возможностей нет: конкуренты уже здесь</h3>
+
+<div class="warning">
+  <div class="warning-title">Критическое обновление: Яндекс Нейро Юрист</div>
+  <p><strong>Яндекс уже запустил «Нейро Юрист»</strong> — AI-помощник для юридических вопросов на базе YandexGPT. Это подтверждает, что конкурентное окно <strong>не существует</strong>. Предыдущие оценки (6–12 мес, затем 12–18 мес) оказались ошибочными — конкуренты двигаются быстрее прогнозов.</p>
+</div>
+
 <pre style="font-size:13px;line-height:1.6">
 Сейчас          6 мес           12 мес          18 мес          24 мес
   |──────────────|───────────────|───────────────|───────────────|
@@ -1043,19 +1053,19 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
   | MVP + 3–5    | + коннектор   | + партнёрский | = барьер      |
   | пилотов      | 1С:Документооб| канал         | ИЛИ commodity  |
   |              |               |               |               |
-  | Yandex Legal?| Сбер реагирует?| 1С AI модуль?|               |
-  |  (6–12 мес)  |  (12–18 мес)  |  (18–24 мес) |               |
+  | Яндекс Нейро | Сбер реагирует| 1С AI модуль? |               |
+  | Юрист — УЖЕ  | (12–18 мес)   | (18–24 мес)   |               |
 </pre>
 
 <div class="warning">
-  <div class="warning-title">Почему 6–12, а не 12–18 месяцев</div>
-  <p>Прежняя оценка (12–18 мес) была оптимистичной. Yandex может запустить шаблоны Legal AI за 6–12 мес (вероятность 40–50%) — у них модели, облако и база клиентов. 12–18 мес — это время до <strong>зрелости</strong> конкурентных предложений, а не до их появления. Окно для захвата первых клиентов и построения глубоких интеграций = <strong>6–12 месяцев</strong>.</p>
+  <div class="warning-title">Стратегический вывод: не окно, а глубина</div>
+  <p>Стратегия MWS AI <strong>не может строиться на временном преимуществе</strong>. Яндекс Нейро Юрист — cloud-only, generic-подход без глубокой интеграции с 1С:Документооборот и СЭД. Конкурентное преимущество MWS AI — не скорость выхода, а <strong>глубина интеграции</strong>: коннекторы к Directum, Docsvision, Тезис, 1С:Документооборот + on-premise для регулируемых отраслей. Каждая глубокая интеграция = switching cost, который Яндекс не будет строить.</p>
 </div>
 
 <h3>Сценарии конкурентного ответа</h3>
 <div class="card-grid">
   <div class="card"><h4>Сбер: Legal/HR AI <span style="color:var(--orange)">30–40%</span></h4><p>12–18 мес от решения. Триггер: MWS докажет спрос с 30+ клиентами. Слабость: бюрократия, «банк, а не Legal Tech вендор». Сила: GigaChat + инфраструктура + база клиентов.</p></div>
-  <div class="card"><h4>Yandex: шаблоны Legal/HR <span style="color:var(--red)">40–50%</span></h4><p>6–12 мес. Очевидный сценарий. Слабость: только облако, нет 1С-интеграции, generic-решения без глубины в российском праве. Сила: модели + облако + скорость.</p></div>
+  <div class="card"><h4>Yandex: Нейро Юрист <span style="color:var(--red)">УЖЕ НА РЫНКЕ</span></h4><p>Яндекс <strong>уже запустил</strong> «Нейро Юрист» на базе YandexGPT. Cloud-only, generic-подход, нет интеграции с 1С/СЭД, нет on-premise. Слабость: не анализирует конкретные договоры клиента в контуре, не проверяет по ГК РФ с учётом судебной практики. Сила: бренд + бесплатный/дешёвый доступ + скорость итераций.</p></div>
   <div class="card"><h4>1С: ИИ-модуль <span style="color:var(--orange)">20–30%</span></h4><p>18–24 мес. Устаревший стек, нет ML-компетенций. Франчайзинговая модель фрагментирует R&D. Но 85–90% проникновение — если запустят, это серьёзно.</p></div>
   <div class="card"><h4>Стартап-конкурент <span style="color:var(--red)">50–60%</span></h4><p>Уже происходит: AutoFAQ (generic KB), чат-боты. Слабость: обёртка над LLM без глубины, низкий барьер. Но могут занять нишу до MWS AI.</p></div>
 </div>
@@ -1129,44 +1139,10 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 </div>
 </section>
 
-<!-- 13. LANDSCAPE -->
-<section id="landscape">
-<h2>13. Конкурентный ландшафт России</h2>
-
-<h3>Прямые конкуренты</h3>
-<div class="table-wrap">
-<table>
-<tr><th>Компания</th><th>Продукт</th><th>Pricing</th><th>AI</th></tr>
-<tr><td>AutoFAQ</td><td>AI KB + chatbot</td><td>30-150K руб/мес</td><td>RAG на внешних LLM</td></tr>
-<tr><td>HRlink</td><td>КЭДО</td><td>200 руб/чел/мес</td><td>AI добавляется</td></tr>
-<tr><td>Sever.AI</td><td>AI recruiting</td><td>50-200K руб/мес</td><td>Resume screening</td></tr>
-<tr><td>ELMA365</td><td>BPM + AI</td><td>500 руб/чел/мес</td><td>AI в BPM</td></tr>
-</table>
-</div>
-
-<h3>Что НЕ закрыто никем</h3>
-<div class="card-grid">
-  <div class="card" style="border-color:rgba(52,211,153,0.3)">
-    <h4>Legal AI для российского права</h4>
-    <p>Анализ договоров с NER, извлечением условий, проверкой рисков по ГК РФ. Pravo.ru и КонсультантПлюс = поиск, не анализ. Зрелого продукта уровня Harvey нет.</p>
-    <span class="tag tag-mws">GAP = первый продукт MWS AI</span>
-  </div>
-  <div class="card" style="border-color:rgba(52,211,153,0.3)">
-    <h4>Кросс-системный поиск</h4>
-    <p>1С + Битрикс24 + Telegram + файлы. Glean не работает в РФ. Никто не строит единый поиск по корпоративным системам.</p>
-    <span class="tag tag-mws">GAP = долгосрочный барьер</span>
-  </div>
-  <div class="card" style="border-color:rgba(52,211,153,0.3)">
-    <h4>Граф знаний с учётом прав доступа</h4>
-    <p>Поиск и ответы с учётом прав доступа пользователя по AD/LDAP. Требует глубокой интеграции с 1С + Битрикс24. Никто не строит.</p>
-    <span class="tag tag-mws">GAP = долгосрочный барьер</span>
-  </div>
-</div>
-</section>
 
 <!-- 14. REVISIONS -->
 <section id="revisions">
-<h2>14. Ревизия слабых аргументов</h2>
+<h2>13. Ревизия слабых аргументов</h2>
 
 <div class="card-grid">
   <div class="card">
@@ -1179,15 +1155,15 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
   </div>
   <div class="card">
     <h4>Окно возможностей</h4>
-    <p><strong>Было:</strong> 12–18 месяцев.<br><strong>Стало:</strong> 6–12 мес до появления конкурентных предложений. 12–18 мес — до их зрелости. Yandex может отреагировать за 6 мес с вероятностью 40–50%.</p>
+    <p><strong>Было:</strong> 12–18 месяцев → скорректировано до 6–12 мес.<br><strong>Стало:</strong> Окна нет. Яндекс Нейро Юрист уже на рынке. Конкурентное преимущество MWS AI — не первенство, а <strong>глубина</strong>: on-premise + интеграции с 1С/СЭД + проверка по ГК РФ. Яндекс = generic cloud, MWS AI = вертикальный enterprise.</p>
   </div>
   <div class="card">
     <h4>Долларовые метрики</h4>
     <p><strong>Было:</strong> ACV $25K, ARR $2–3M, зарплаты $350K+.<br><strong>Стало:</strong> ACV 3–5M руб, выручка 15–75M руб (год 1), выездной инженер 7–11M руб/год. Российские зарплаты и чеки — не американские.</p>
   </div>
   <div class="card">
-    <h4>Harvey как аналог</h4>
-    <p><strong>Было:</strong> Harvey = $195M, Legal Copilot = аналог.<br><strong>Стало:</strong> Аналогия по продукту, не по экономике. Час юриста в РФ: 1 500–5 000 руб (не $300–1 500). ROI Legal Copilot строится на объёмах (сотни договоров) и снижении рисков, а не на замене дорогого юриста.</p>
+    <h4>Harvey как аналог → iFlytek как аналог</h4>
+    <p><strong>Было:</strong> Harvey = $195M, Legal Copilot = аналог.<br><strong>Стало:</strong> Harvey — неработающая аналогия. Час юриста в РФ: 1 500–5 000 руб (не $300–1 500), ROI в 10–30× ниже. Реальный аналог — <strong>iFlytek (Китай)</strong>: выручка 23,3 млрд юаней, 1 520 тендеров/год, проектные бригады на площадке, вертикализация по отраслям. Модель «технологическая дочка → тендеры + глубокие интеграции + on-premise» = точный паттерн MWS AI.</p>
   </div>
   <div class="card">
     <h4>Облачная стратегия</h4>
@@ -1198,7 +1174,12 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 
 <!-- 15. ROI -->
 <section id="roi">
-<h2>15. ROI для финансового директора</h2>
+<h2>14. ROI для финансового директора</h2>
+
+<div class="warning">
+  <div class="warning-title">Все ROI-расчёты ниже — теоретические</div>
+  <p>В отчёте <strong>нет ни одного подтверждённого design partner</strong> и ни одного интервью с юр. директором целевой компании. Все цифры экономии, сроков окупаемости и высвобождения FTE — экстраполяции по аналогии с Harvey (США) и общей практикой автоматизации. <strong>Точность извлечения условий >95%</strong> — заявленная цель, не подтверждённый факт: нет размеченного датасета на российских коммерческих договорах. До валидации с 3–5 реальными юр. отделами эти расчёты остаются гипотезами, а не бизнес-кейсом.</p>
+</div>
 
 <h3>Legal Copilot: ROI калькулятор (юр. отдел 10 человек)</h3>
 <div class="table-wrap">
@@ -1252,7 +1233,7 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 
 <!-- 16. FIRST 10 -->
 <section id="first10">
-<h2>16. Первые 10 клиентов: Playbook</h2>
+<h2>15. Первые 10 клиентов: Playbook</h2>
 
 <h3>Как это делали другие</h3>
 <div class="table-wrap">
