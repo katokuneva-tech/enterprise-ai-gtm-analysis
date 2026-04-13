@@ -200,15 +200,15 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 </div>
 
 <div class="stats">
-  <div class="stat-card accent"><div class="number">$37B</div><div class="label">Enterprise AI market (2025)</div></div>
-  <div class="stat-card red"><div class="number">95%</div><div class="label">AI investments = zero EBIT impact</div></div>
-  <div class="stat-card orange"><div class="number">40%</div><div class="label">AI startups failed in 24 months</div></div>
-  <div class="stat-card green"><div class="number">12-18m</div><div class="label">Window of opportunity для MWS</div></div>
-  <div class="stat-card cyan"><div class="number">$6.3B</div><div class="label">Russia AI market (2025)</div></div>
+  <div class="stat-card accent"><div class="number">$37 млрд</div><div class="label">Глобальный рынок корпоративного ИИ (2025)</div></div>
+  <div class="stat-card red"><div class="number">95%</div><div class="label">ИИ-проектов без влияния на прибыль (MIT, все виды ИИ)</div></div>
+  <div class="stat-card orange"><div class="number">40%</div><div class="label">ИИ-стартапов закрылись за 24 мес. (base rate стартапов ~50–60%)</div></div>
+  <div class="stat-card green"><div class="number">6-12 мес.</div><div class="label">Окно до появления конкурентных предложений</div></div>
+  <div class="stat-card cyan"><div class="number">~300 млрд &#8381;</div><div class="label">Рынок ИИ в России (2025, оценка TAdviser/IDC)</div></div>
 </div>
 
 <blockquote>
-  <strong>Ключевой вывод:</strong> Победители рынка решают не технологическую, а adoption-проблему. Выигрывают те, кто (1) сужает точку входа до конкретного workflow, (2) доказывает ROI в первые 30 дней, (3) строит data moat через интеграции. В России — дополнительное окно из-за санкций, отсутствия Glean/M365 Copilot и обязательной data localization.
+  <strong>Ключевой вывод:</strong> Победители рынка решают не технологическую, а проблему внедрения. Выигрывают те, кто (1) сужает точку входа до конкретного рабочего процесса, (2) доказывает окупаемость в первые 30 дней, (3) строит барьер через глубокие интеграции. В России — дополнительное окно из-за санкций, отсутствия Glean/M365 Copilot и требований 152-ФЗ по локализации данных. MWS AI работает только в контуре клиента (on-premise) — это ограничение по скорости входа, но преимущество для регулируемых отраслей.
 </blockquote>
 
 <!-- 1. GTM MODELS -->
@@ -228,9 +228,9 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 <p><strong>Суть:</strong> инженеры вендора встраиваются в команду клиента, пишут код, настраивают модели, строят рабочие процессы «от и до». Это самая дорогая и самая глубокая модель продажи.</p>
 
 <div class="stats">
-  <div class="stat-card accent"><div class="number">+1 165%</div><div class="label">рост вакансий выездных инженеров за год</div></div>
-  <div class="stat-card green"><div class="number">$350–630K</div><div class="label">годовая компенсация в OpenAI</div></div>
-  <div class="stat-card orange"><div class="number">$2,3 млрд</div><div class="label">убытков Palantir до выхода на прибыль</div></div>
+  <div class="stat-card accent"><div class="number">+1 165%</div><div class="label">рост вакансий выездных инженеров за год (глобально)</div></div>
+  <div class="stat-card green"><div class="number">$350–630K</div><div class="label">годовая компенсация в OpenAI (Калифорния)</div></div>
+  <div class="stat-card cyan"><div class="number">7–11M &#8381;</div><div class="label">аналогичная роль в России (с налогами и накладными)</div></div>
 </div>
 
 <p><strong>Кто использует:</strong></p>
@@ -244,9 +244,14 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 <p><strong>Когда работает:</strong> крупные контракты (средний чек >$500K), сложные процессы с глубокой интеграцией, клиент не может внедрить сам.</p>
 <p><strong>Когда не работает:</strong> стартапы без капитала на содержание дорогих инженеров. Масштабируется плохо — каждый клиент требует отдельной команды.</p>
 
+<div class="warning">
+  <div class="warning-title">Антипример: дорого и не масштабируется</div>
+  <p><strong>Palantir</strong> — пионер выездной инженерии — накопил $2,3 млрд убытков за 17 лет, прежде чем выйти на прибыль. Модель работала только при ACV >$5M и с клиентами уровня ЦРУ и Airbus. Многие стартапы (Uptake, C3.ai, DataRobot) пытались скопировать подход с меньшим чеком и потеряли по $100M+. C3.ai: с пика $310 выручки на акцию упала >80%, убытки продолжаются. <strong>Урок:</strong> выездные инженеры окупаются только при огромных контрактах или госфинансировании.</p>
+</div>
+
 <div class="verdict">
   <div class="verdict-title">Применимость для MWS AI</div>
-  <p><strong>Сейчас — преждевременно.</strong> При годовой выручке ~200 млн ₽ содержание выездных инженеров с компенсацией $350K+ нецелесообразно. Но элементы модели уже существуют: управляемый запуск по тарифу Professional (1–2 недели, настройка источников, прав, промптов) — это лёгкая версия выездной инженерии. При переходе к облачной модели 2–3 инженера на контейнеризацию продуктов — фактически внутренняя выездная команда.</p>
+  <p><strong>Модель подъёмна, но нужен расчёт.</strong> В российских реалиях выездной ML-инженер стоит 7–11M руб/год (500–900K руб/мес с налогами). При выручке ~200M руб — 2–3 таких инженера = 15–33M руб/год, или 7–16% выручки. Это сопоставимо с долей продаж у зрелых SaaS-компаний. Вопрос не «можем ли позволить», а «какой ACV оправдает». При 10 клиентах с ACV 3–5M руб выездная инженерия окупается. Элементы модели уже существуют: управляемый запуск (настройка источников, прав, промптов в контуре клиента) — это лёгкая версия выездной инженерии.</p>
 </div>
 
 <h3>1.2 Партнёрства с интеграторами и консалтингом</h3>
@@ -269,6 +274,11 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 
 <p><strong>Главная проблема:</strong> неэксклюзивность. Интегратор продаёт решение, которое выгоднее ему, а не вендору. Контроль над клиентом теряется.</p>
 
+<div class="warning">
+  <div class="warning-title">Антипример: когда партнёрство пожирает маржу</div>
+  <p><strong>IBM Watson</strong> — масштабная партнёрская программа (тысячи интеграторов), но партнёры не понимали продукт, обещали клиентам невозможное, проекты проваливались. Watson Health продан Merative в 2022 году после миллиардов убытков. <strong>Kore.ai, Amelia (IPsoft)</strong> — оба строили разговорный ИИ через каналы интеграторов: партнёры перепродавали, но не обеспечивали качество внедрения. Amelia потеряла позиции, несмотря на 200+ enterprise-клиентов. <strong>Урок:</strong> без контроля качества внедрения партнёрский канал размывает репутацию продукта.</p>
+</div>
+
 <div class="table-wrap">
 <table>
 <tr><th>Глобальная модель</th><th>Российский аналог для MWS</th><th>Охват</th></tr>
@@ -281,7 +291,7 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 
 <div class="verdict">
   <div class="verdict-title">Применимость для MWS AI</div>
-  <p><strong>Ключевой канал масштабирования.</strong> 1С-франчайзи — главный актив: 7 000+ компаний с прямым доступом к бухгалтерии, кадрам и документообороту каждого предприятия. Задача — сделать Legal Copilot и HR KB дополнением к 1С:Документооборот. Через B2B Store MWS Cloud — вторичный канал для самообслуживания.</p>
+  <p><strong>Ключевой канал масштабирования, но с оговоркой.</strong> 1С-франчайзи — 7 000+ компаний, но большинство — мелкие (5–50 человек) без ML-компетенций. Реалистично работать с <strong>10–20 крупнейшими</strong> (КРОК, Softline, Ланит, IBS и др.), у которых есть ресурсы на обучение и внедрение ИИ-продуктов. Задача — сделать Legal Copilot дополнением к 1С:Документооборот для этих партнёров. Обучение и сертификация 10–20 партнёров — задача на 3–6 месяцев, а не 7 000.</p>
 </div>
 
 <h3>1.3 Рост через продукт (снизу вверх)</h3>
@@ -290,13 +300,13 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 
 <div class="stats">
   <div class="stat-card accent"><div class="number">27%</div><div class="label">расходов на ИИ идёт через продуктовый рост (×4 к обычному ПО)</div></div>
-  <div class="stat-card green"><div class="number">$0→$2 млрд</div><div class="label">Cursor — без отдела продаж</div></div>
+  <div class="stat-card green"><div class="number">$200M→$2 млрд</div><div class="label">Cursor — рост без отдела продаж (подтверждено $200M, $2B = экстраполяция)</div></div>
   <div class="stat-card orange"><div class="number">~40%</div><div class="label">ИИ-расходов — «теневые» закупки подразделений</div></div>
 </div>
 
 <p><strong>Кто преуспел:</strong></p>
 <ul>
-  <li><strong>Cursor</strong> — с нуля до $2 млрд годовой выручки без единого продавца. Разработчики начинают пользоваться сами, описывают себя как «когнитивно неполноценных» без инструмента.</li>
+  <li><strong>Cursor</strong> — подтверждённая выручка ~$200M ARR (начало 2025), экстраполяция до $2 млрд. Продаёт разработчикам за $20/мес. <em>Нерелевантно для MWS AI напрямую: целевая аудитория MWS — юристы и HR-директора, которые не будут самостоятельно пробовать продукт.</em></li>
   <li><strong>GitHub Copilot</strong> — $500M годовой выручки. Разработчики не могут работать без него, компания покупает лицензии.</li>
   <li><strong>n8n</strong> — из сообщества в корпоративные контракты после сотен активных пользователей внутри компании.</li>
 </ul>
@@ -318,9 +328,14 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 <p><strong>Суть:</strong> вместо длинного цикла продажи — короткая интенсивная сессия на реальных данных клиента. За 1–5 дней клиент видит результат на своих документах и принимает решение.</p>
 
 <div class="stats">
-  <div class="stat-card green"><div class="number">75%</div><div class="label">конверсия воркшопов Palantir в контракт</div></div>
   <div class="stat-card accent"><div class="number">1 300+</div><div class="label">воркшопов проведено Palantir к Q4 2024</div></div>
-  <div class="stat-card cyan"><div class="number">~100%</div><div class="label">конверсия пилотов OpenAI (30–60 дней)</div></div>
+  <div class="stat-card green"><div class="number">75%</div><div class="label">конверсия Palantir (5 дней, ACV >$1M, Fortune 500)</div></div>
+  <div class="stat-card orange"><div class="number">30–40%</div><div class="label">реалистичная конверсия для MWS AI (2–3 ч, мидмаркет РФ)</div></div>
+</div>
+
+<div class="warning">
+  <div class="warning-title">Оговорка к цифрам конверсии</div>
+  <p>75% Palantir — это 5-дневные интенсивы с командой из десятков инженеров для Fortune 500 с ACV >$1M. «~100% конверсия пилотов OpenAI» — маркетинговое заявление без независимого подтверждения. Для MWS AI с 2–3 часовыми сессиями в российском мидмаркете реалистичная цель — 30–40%, что уже выше среднего цикла продаж корпоративного ПО (15–25%).</p>
 </div>
 
 <p><strong>Как это работает:</strong></p>
@@ -329,6 +344,11 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
   <li><strong>OpenAI</strong> — структурированные пилоты на 30–60 дней с отдельной командой (менеджеры развёртывания ИИ). Заявленная конверсия ~100%. Расширение >95% клиентов в первый год.</li>
   <li><strong>Anthropic</strong> — аналогично: выездная инженерия + «обслуживание с сопровождением» для пилотных проектов.</li>
 </ul>
+
+<div class="warning">
+  <div class="warning-title">Антипример: воркшопы без продукта = дорогой консалтинг</div>
+  <p><strong>Element AI (Канада, 2017–2020)</strong> — проводили сотни «дискавери-воркшопов» с крупными компаниями, но не имели готового продукта за спиной. Каждый воркшоп превращался в кастомный проект. Привлекли $257M, но так и не нашли повторяемую модель монетизации. Проданы ServiceNow за ~$230M — дешевле суммарных инвестиций. <strong>Урок:</strong> воркшоп работает как воронка для готового продукта, а не как замена продукта.</p>
+</div>
 
 <p><strong>Почему это работает лучше обычных продаж:</strong></p>
 <ul>
@@ -349,7 +369,7 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 <div class="stats">
   <div class="stat-card green"><div class="number">$100M</div><div class="label">годовая выручка Sierra за 7 кварталов</div></div>
   <div class="stat-card accent"><div class="number">700+</div><div class="label">клиентов Harvey (юридический ИИ)</div></div>
-  <div class="stat-card cyan"><div class="number">40%</div><div class="label">корпоративных приложений с агентами к концу 2026 (Gartner)</div></div>
+  <div class="stat-card cyan"><div class="number">40%</div><div class="label">приложений с агентами к 2026 (Gartner*), но 40%+ агентных проектов будут отменены — рынок волатилен</div></div>
 </div>
 
 <p><strong>Кто пропустил стадию помощника:</strong></p>
@@ -369,19 +389,19 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 
 <div class="verdict">
   <div class="verdict-title">Применимость для MWS AI</div>
-  <p><strong>Прямое попадание.</strong> Каждый продукт MWS AI — это один агент с одной чёткой задачей: Legal Copilot анализирует договоры (аналог Harvey), HR KB отвечает на вопросы сотрудников (аналог Glean-паттерна), Enterprise Search ищет по корпоративным системам с учётом прав доступа. Это не «универсальный ИИ-ассистент для всех задач» — а набор узкоспециализированных продуктов на общей платформе (MWS AI CC Hub). Именно такой подход показывает 93% вовлечённости (Glean) против 5% у «универсальных» решений.</p>
+  <p><strong>Прямое попадание.</strong> Каждый продукт MWS AI — это один агент с одной чёткой задачей: Legal Copilot анализирует договоры (аналог Harvey), HR KB отвечает на вопросы сотрудников (аналог Glean-паттерна), Enterprise Search ищет по корпоративным системам с учётом прав доступа. Это не «универсальный ИИ-ассистент для всех задач» — а набор узкоспециализированных продуктов на общей платформе (MWS AI CC Hub). Такой подход показывает значительно более высокую вовлечённость, чем «универсальные» решения (Glean заявляет 93%, но это зрелая метрика компании с $200M выручки и десятками коннекторов — для MWS AI на старте реалистичная цель 30–50% DAU).</p>
 </div>
 
 <h3>1.6 Сравнительная таблица моделей</h3>
 
 <div class="table-wrap">
 <table>
-<tr><th>Модель</th><th>Цикл сделки</th><th>Средний чек</th><th>Масштабируемость</th><th>Контроль над клиентом</th><th>Подходит MWS AI</th></tr>
-<tr><td>Выездные инженеры</td><td>3–12 мес.</td><td>>$500K</td><td>Низкая</td><td>Максимальный</td><td style="color:var(--orange)">Позже</td></tr>
-<tr><td>Партнёрства с интеграторами</td><td>2–6 мес.</td><td>$50–500K</td><td>Высокая</td><td>Низкий</td><td style="color:var(--green)">Да, через 1С</td></tr>
-<tr><td>Рост через продукт</td><td>Самообслуживание</td><td><$100K</td><td>Максимальная</td><td>Средний</td><td style="color:var(--orange)">После облака</td></tr>
-<tr><td>Воркшопы / демо-сессии</td><td>1–4 нед.</td><td>$50–300K</td><td>Средняя</td><td>Высокий</td><td style="color:var(--green)"><strong>Основная</strong></td></tr>
-<tr><td>Агенты с первого дня</td><td>1–3 мес.</td><td>$100K+</td><td>Высокая</td><td>Высокий</td><td style="color:var(--green)"><strong>Продуктовая стратегия</strong></td></tr>
+<tr><th>Модель</th><th>Цикл сделки</th><th>Чек (США)</th><th>Чек (Россия)</th><th>Масштабируемость</th><th>Подходит MWS AI</th></tr>
+<tr><td>Выездные инженеры</td><td>3–12 мес.</td><td>>$500K</td><td>>5M &#8381;/год</td><td>Низкая</td><td style="color:var(--green)">При ACV >3M &#8381;</td></tr>
+<tr><td>Партнёрства с интеграторами</td><td>2–6 мес.</td><td>$50–500K</td><td>1–10M &#8381;</td><td>Высокая</td><td style="color:var(--green)">Да, через 1С</td></tr>
+<tr><td>Рост через продукт</td><td>Самообслуживание</td><td>&lt;$100K</td><td>&lt;1M &#8381;</td><td>Максимальная</td><td style="color:var(--orange)">Если будет облако</td></tr>
+<tr><td>Воркшопы / демо-сессии</td><td>1–4 нед.</td><td>$50–300K</td><td>2–10M &#8381;</td><td>Средняя</td><td style="color:var(--green)"><strong>Основная</strong></td></tr>
+<tr><td>Агенты с первого дня</td><td>1–3 мес.</td><td>$100K+</td><td>2–15M &#8381;</td><td>Высокая</td><td style="color:var(--green)"><strong>Продуктовая стратегия</strong></td></tr>
 </table>
 </div>
 
@@ -504,7 +524,7 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 
 <div class="verdict">
   <div class="verdict-title">Урок для MWS AI</div>
-  <p><strong>1С-франчайзи = российские SIer.</strong> 7 000+ компаний с многолетними отношениями и 85–90% проникновением в бизнес от 500 сотрудников. Продавать напрямую клиентам — дорого и медленно. Продавать через 1С-франчайзи как канал — модель, доказанная в Японии на протяжении десятилетий. Собственные языковые модели NTT/Fujitsu/NEC — аналог стратегии MWS AI с open-source моделями (Qwen, Kimi-K2) вместо зависимости от MWS GPT.</p>
+  <p><strong>Аналогия с оговоркой.</strong> NTT Data, Fujitsu, NEC — 3 гиганта с тысячами инженеров. 1С-франчайзи — 7 000 мелких компаний по 5–50 человек. Управлять 3 партнёрами и 7 000 — принципиально разные задачи. Реалистичный аналог: работать с <strong>10–20 крупнейшими 1С-партнёрами</strong> (КРОК, Softline, Ланит), которые по масштабу ближе к японским SIer. Собственные языковые модели NTT/Fujitsu/NEC — аналог стратегии MWS AI с open-source моделями (Qwen, Kimi-K2) вместо зависимости от MWS GPT.</p>
 </div>
 
 <!-- MIDDLE EAST -->
@@ -726,8 +746,10 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 </div>
 
 <div class="verdict">
-  <div class="verdict-title">Для MWS</div>
-  <p>Per-seat (100-300 руб/чел/мес) для начала — проще считать, понятнее CFO. Outcome-компонент (per resolved ticket) как upsell. "Digital labor" framing при продаже CHRO.</p>
+  <div class="verdict-title">Для MWS AI: ценообразование по продуктам</div>
+  <p><strong>Legal Copilot:</strong> 5 000–15 000 руб/юрист/мес. Юристов в компании 5–20 → ACV 300K–3,6M руб/год. Обоснование: экономия 2–3 FTE юристов (300–900K руб/мес), стоимость = 10–20% от экономии. Harvey берёт $1 200/юрист/мес на рынке с часом юриста $300–1 500. В РФ при часе 1 500–5 000 руб пропорциональная цена = 5 000–15 000 руб.</p>
+  <p><strong>HR KB</strong> (второй продукт): 100–300 руб/чел/мес. Но при сравнении с конкурентами (HRlink: 200 руб/чел/мес, ELMA365: 500 руб/чел/мес) — MWS AI позиционируется ниже. Если заявлять глубокую интеграцию с КЭДО/1С:ЗУП — цена должна быть 300–500 руб/чел/мес.</p>
+  <p><strong>Enterprise Search</strong> (третий продукт): гибридная модель — подписка + потребление (по числу проиндексированных источников).</p>
 </div>
 </section>
 
@@ -743,7 +765,7 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 <tr><td><strong>Европа</strong></td><td>Sovereign stack + compliance</td><td>GDPR/AI Act, sovereignty</td><td>~$120B</td></tr>
 <tr><td><strong>Бл. Восток</strong></td><td>Sovereign fund mandate</td><td>Buyer = investor = government</td><td>$72.7B infra</td></tr>
 <tr><td><strong>Япония</strong></td><td>SIer bundling</td><td>No direct-to-enterprise</td><td>$135B infra</td></tr>
-<tr><td><strong>Россия</strong></td><td>152-ФЗ + import subst.</td><td>1С/Битрикс24 dominant</td><td>$6.3B → $47.5B</td></tr>
+<tr><td><strong>Россия</strong></td><td>152-ФЗ + import subst.</td><td>1С/Битрикс24 dominant</td><td>~300 млрд ₽ (TAdviser/IDC)</td></tr>
 </table>
 </div>
 
@@ -779,7 +801,7 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 </div>
 
 <div class="stats">
-  <div class="stat-card red"><div class="number">95%</div><div class="label">AI investments = zero EBIT (MIT)</div></div>
+  <div class="stat-card red"><div class="number">95%</div><div class="label">ИИ-проектов без влияния на EBIT (MIT, все виды ИИ за длительный период — не только GenAI 2024–2026)</div></div>
   <div class="stat-card red"><div class="number">42%</div><div class="label">Abandoned AI initiatives (2025)</div></div>
   <div class="stat-card orange"><div class="number">26.7%</div><div class="label">CFOs plan to raise AI budgets (was 53%)</div></div>
   <div class="stat-card red"><div class="number">40%+</div><div class="label">Agentic projects will be canceled (Gartner)</div></div>
@@ -788,23 +810,104 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 
 <!-- 7. MWS -->
 <section id="mws">
-<h2>7. Применимость для MWS</h2>
+<h2>7. Применимость для MWS AI</h2>
 
-<h3>GTM-стратегия по фазам</h3>
+<h3>Почему Legal Copilot первый, а не HR KB</h3>
+
+<div class="warning">
+  <div class="warning-title">Проблема прежней стратегии: HR KB — слабая точка входа</div>
+  <p>Первоначальный план предлагал начать с HR KB (база знаний для сотрудников: отпуска, ДМС, онбординг). Но <strong>многие компании уже решают эту задачу сами</strong> — FAQ на Confluence, бот в Telegram, раздел на внутреннем портале. Ценность ИИ-агента неочевидна: вопросы типовые, ответы стабильные, стоимость ошибки низкая. HR-директору трудно обосновать бюджет на замену работающего FAQ ботом за деньги.</p>
+</div>
+
+<div class="table-wrap">
+<table>
+<tr><th>Критерий</th><th>Legal Copilot</th><th>HR KB</th><th>Почему это важно</th></tr>
+<tr><td><strong>Сложность задачи</strong></td><td style="color:var(--green)">Высокая: анализ договоров, извлечение условий, оценка рисков по ГК РФ</td><td style="color:var(--red)">Низкая: ответы на типовые вопросы</td><td>Чем сложнее задача, тем выше ценность ИИ и тем труднее клиенту сделать самому</td></tr>
+<tr><td><strong>Альтернатива «сделай сам»</strong></td><td style="color:var(--green)">Нет: нужны NER, extraction, знание российского права</td><td style="color:var(--red)">Есть: Confluence FAQ, Telegram-бот, внутренний портал</td><td>Если клиент может решить задачу сам — он не заплатит</td></tr>
+<tr><td><strong>Покупатель</strong></td><td style="color:var(--green)">Юр. директор — бюджетодержатель с конкретной болью</td><td style="color:var(--orange)">HR-директор — часто не владеет ИТ-бюджетом</td><td>Тот, кто платит, должен чувствовать боль</td></tr>
+<tr><td><strong>Измеримость ROI</strong></td><td style="color:var(--green)">Часы юристов × стоимость часа. In-house юрист в РФ: 1 500–5 000 руб/час. Внешний: 5 000–30 000 руб/час</td><td style="color:var(--orange)">Абстрактное «экономия времени HR»</td><td>Финансовый директор одобряет только измеримый ROI</td></tr>
+<tr><td><strong>Средний чек</strong></td><td style="color:var(--green)">5–15K руб/юрист/мес (5–20 юристов = 75–300K руб/мес)</td><td style="color:var(--red)">100–300 руб/чел/мес — commodity</td><td>При 10 клиентах нужен ACV ≥3M руб</td></tr>
+<tr><td><strong>Конкуренция в РФ</strong></td><td style="color:var(--green)">Нет зрелого Legal AI (Pravo.ru — поиск, не анализ)</td><td style="color:var(--red)">AutoFAQ, HRlink, десятки простых чат-ботов</td><td>Менее конкурентная ниша vs переполненная</td></tr>
+<tr><td><strong>Аналог-валидация</strong></td><td style="color:var(--orange)">Harvey: $195M выручки, но на рынке США (час юриста $300–1 500). В РФ ROI в 10–30× ниже — нужен другой бизнес-кейс</td><td style="color:var(--orange)">Moveworks: часть IT helpdesk, не standalone</td><td>Аналогия по продукту, не по экономике</td></tr>
+</table>
+</div>
+
+<div class="success-box">
+  <div class="success-title">Вывод</div>
+  <p>Legal Copilot — продукт, который клиент <strong>не может сделать сам</strong>: анализ договоров требует NER, извлечения условий, проверки по ГК РФ, оценки рисков. Это не FAQ-бот. HR KB имеет смысл как <strong>второй продукт</strong> (Q3), когда инфраструктура уже развёрнута и 80% компонентов переиспользуются.</p>
+</div>
+
+<h3>Когда HR KB всё-таки имеет ценность</h3>
+
+<p>HR KB — не бесполезный продукт. Но его ценность раскрывается <strong>не в ответах на простые вопросы</strong>, а в конкретных сценариях:</p>
+
+<div class="card-grid">
+  <div class="card">
+    <h4>КЭДО + 1С:ЗУП интеграция</h4>
+    <p>Когда HR KB подключён к кадровому электронному документообороту и 1С:ЗУП, он может отвечать не из статичного FAQ, а <strong>из реальных данных сотрудника</strong>: «сколько у меня дней отпуска осталось?», «когда следующая индексация по моему грейду?». Это не FAQ — это персонализированный агент.</p>
+    <span class="tag tag-works">Ценность: замена HR-оператора, не FAQ</span>
+  </div>
+  <div class="card">
+    <h4>Онбординг 100+ человек/мес</h4>
+    <p>Компании с массовым наймом (ритейл, логистика, колл-центры) тратят 2–5 часов HR на каждого нового сотрудника. При 100+ нанятых в месяц — это 200–500 человекочасов. ИИ-агент снимает 60–80% рутинных вопросов первой недели.</p>
+    <span class="tag tag-works">Ценность: при масштабе найма >100/мес</span>
+  </div>
+  <div class="card">
+    <h4>Мультиязычная компания / СНГ</h4>
+    <p>Компания с офисами в Казахстане, Узбекистане, Армении. HR-политики на русском, вопросы на местных языках. HR KB с мультиязычным RAG решает задачу, которую статичный FAQ не решает.</p>
+    <span class="tag tag-mws">Ценность: языковой барьер</span>
+  </div>
+</div>
+
+<h3>Пересмотренная стратегия по фазам</h3>
+
 <div class="timeline">
-  <div class="timeline-item success"><div class="time">Phase 1: Land (мес. 1-6)</div><div class="desc">HR KB agent-first + workshops на данных клиента. Per-seat pricing. Target: mid-market 500-5000 на Битрикс24/1С.</div></div>
-  <div class="timeline-item"><div class="time">Phase 2: Expand (мес. 6-18)</div><div class="desc">HR → IT helpdesk → internal search. Коннекторы: 1С, Битрикс24, Telegram. Knowledge Graph.</div></div>
-  <div class="timeline-item"><div class="time">Phase 3: Defensible (мес. 18-36)</div><div class="desc">Cross-system search + permission-aware connectors = moat. СНГ expansion. Partner program.</div></div>
+  <div class="timeline-item success">
+    <div class="time">Фаза 1: Вход (Q2 2026, апрель–июнь)</div>
+    <div class="desc"><strong>Legal Copilot on-premise</strong> — первый продукт. Анализ договоров, извлечение условий, проверка рисков по ГК РФ. Покупатель: юр. директор. Развёртывание в контуре клиента: пилот 2–4 недели, промышленная эксплуатация 2–3 мес. Параллельно: подача в Реестр отечественного ПО. <strong>Цель: 3–5 пилотных клиентов.</strong></div>
+  </div>
+  <div class="timeline-item">
+    <div class="time">Фаза 2: Расширение каталога (Q3 2026, июль–сентябрь)</div>
+    <div class="desc"><strong>HR KB + Enterprise Search</strong> — переиспользуют 80% инфраструктуры Legal Copilot на той же on-prem платформе клиента. HR KB: фокус на КЭДО/1С:ЗУП интеграцию (не простой FAQ). Enterprise Search: поиск с учётом прав доступа. Совместный маркетинг: кейсы на True Tech Day, ЦИПР. <strong>Цель: 10 клиентов.</strong></div>
+  </div>
+  <div class="timeline-item">
+    <div class="time">Фаза 3: Масштабирование (Q4 2026 – Q1 2027)</div>
+    <div class="desc"><strong>Партнёрский канал</strong> через 10–20 крупнейших 1С-интеграторов. Обучение и сертификация партнёров. Finance Copilot — если Legal Copilot подтвердил спрос. <strong>Цель: 25–40 клиентов.</strong></div>
+  </div>
+  <div class="timeline-item">
+    <div class="time">Фаза 4: Защита позиции (2027)</div>
+    <div class="desc"><strong>Кросс-системный поиск с графом знаний</strong> — коннекторы к 1С, Битрикс24, Confluence, SharePoint, КЭДО с учётом прав доступа. Граф знаний (не просто RAG) = долгосрочный барьер для конкурентов. Экспансия в СНГ. <strong>Цель: барьер, который Сбер/Яндекс не воспроизведут быстро.</strong></div>
+  </div>
+</div>
+
+<h3>Облако как рассматриваемая опция</h3>
+
+<div class="warning">
+  <div class="warning-title">Статус: не согласовано</div>
+  <p>Облачная стратегия (MWS AI Cloud на инфраструктуре MWS Cloud) — <strong>прорабатывается, но не утверждена</strong>. Если будет согласована, она решит главную проблему: пилот за 1–2 недели vs 2–3 месяца on-prem. Это кратно ускорит воронку продаж и откроет мидмаркет. Без облака MWS AI ограничен крупным enterprise и госсектором, где on-premise — требование.</p>
+</div>
+
+<div class="table-wrap">
+<table>
+<tr><th>Параметр</th><th>Текущее (on-premise)</th><th>Если облако согласовано</th></tr>
+<tr><td><strong>Запуск</strong></td><td>2–3 мес. пилот, 6+ мес. прод</td><td style="color:var(--green)">1–2 недели (managed)</td></tr>
+<tr><td><strong>Целевой сегмент</strong></td><td>Крупный enterprise, госсектор, регулируемые</td><td>+ мидмаркет, компании без ИТ-инфраструктуры</td></tr>
+<tr><td><strong>Пробный доступ</strong></td><td style="color:var(--red)">Невозможен</td><td style="color:var(--green)">14 дней бесплатно</td></tr>
+<tr><td><strong>Масштабируемость</strong></td><td>Линейная (каждый клиент = отдельное развёртывание)</td><td>Нелинейная (мультитенант)</td></tr>
+<tr><td><strong>Воронка</strong></td><td>Прямые продажи → пилот → контракт</td><td>Облако (быстрый вход) → on-prem (премиум для regulated)</td></tr>
+</table>
 </div>
 
 <h3>Чего избегать</h3>
 <div class="table-wrap">
 <table>
-<tr><th>Anti-pattern</th><th>Почему</th><th>Кто пострадал</th></tr>
-<tr><td>"GPT wrapper" без data moat</td><td>Один релиз Sber/Yandex убивает</td><td>Jasper AI (-54%)</td></tr>
-<tr><td>FDE на ранней стадии</td><td>Unit economics collapse</td><td>95%+ стартапов</td></tr>
-<tr><td>Big-bang rollout</td><td>12-22% DAU vs 65-78%</td><td>M365 Copilot</td></tr>
-<tr><td>"Horizontal AI assistant"</td><td>= shelfware</td><td>M365 Copilot</td></tr>
+<tr><th>Ошибка</th><th>Почему опасно</th><th>Кто пострадал</th></tr>
+<tr><td>«Обёртка над LLM» без глубины в данных</td><td>Один релиз Сбера/Яндекса убивает: у них модели, инфраструктура, клиентская база</td><td>Jasper AI: $120M → $35M (−54%)</td></tr>
+<tr><td>Выездные инженеры на ранней стадии</td><td>$350K+ на инженера при 3–5 клиентах — юнит-экономика не сходится</td><td>95%+ ИИ-стартапов</td></tr>
+<tr><td>Массовое внедрение без пилота</td><td>12–22% ежедневного использования vs 65–78% при пошаговом внедрении</td><td>M365 Copilot: 40–70% лицензий не используются</td></tr>
+<tr><td>«Универсальный ИИ-ассистент для всех задач»</td><td>= неиспользуемый софт. Делает всё для всех = не делает ничего хорошо</td><td>M365 Copilot: 3,3% конверсия, 5% пилотов в прод</td></tr>
+<tr><td>Начинать с HR KB как с первого продукта</td><td>Низкий барьер входа = низкая ценность. Клиент решает задачу сам через FAQ + простого бота</td><td>Десятки HR-ботов на рынке, commodity-конкуренция</td></tr>
+<tr><td>5 продуктов параллельно</td><td>Не хватит команды — размазывание ресурса убивает качество каждого продукта</td><td>Строгая последовательность: Legal → HR KB → Search → Finance</td></tr>
 </table>
 </div>
 </section>
@@ -818,35 +921,46 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 
 <!-- 8. TAM -->
 <section id="tam">
-<h2>8. TAM / SAM / SOM для MWS в России</h2>
+<h2>8. TAM / SAM / SOM для MWS AI в России</h2>
 
-<h3>Российский HR Tech</h3>
-<div class="bar-chart">
-  <div class="bar-row"><span class="bar-label">HCM / HRIS (1С:ЗУП)</span><div class="bar-track"><div class="bar-fill" style="width:38%;background:var(--accent)">~37%</div></div></div>
-  <div class="bar-row"><span class="bar-label">Payroll & compliance</span><div class="bar-track"><div class="bar-fill" style="width:23%;background:var(--accent)">~22%</div></div></div>
-  <div class="bar-row"><span class="bar-label">ATS (рекрутинг)</span><div class="bar-track"><div class="bar-fill" style="width:17%;background:var(--accent)">~17%</div></div></div>
-  <div class="bar-row"><span class="bar-label">LMS / e-learning</span><div class="bar-track"><div class="bar-fill" style="width:11%;background:var(--accent)">~11%</div></div></div>
-  <div class="bar-row"><span class="bar-label">AI-powered HR</span><div class="bar-track"><div class="bar-fill" style="width:5%;background:var(--cyan)">~4%</div></div></div>
-</div>
+<h3>Legal Tech + Workplace AI: два адресуемых рынка</h3>
 
-<h3>TAM → SAM → SOM</h3>
+<p>MWS AI — не только HR-компания. Стратегия Legal-first означает, что первый TAM — юридический рынок, второй — HR/workplace AI. Оценки ниже даны отдельно.</p>
+
+<h4>Legal Tech AI (первый продукт — Legal Copilot)</h4>
 <div class="stats">
-  <div class="stat-card accent"><div class="number">13B &#8381;</div><div class="label">TAM: весь HR Tech РФ (2025)</div></div>
-  <div class="stat-card cyan"><div class="number">0.7-1.5B &#8381;</div><div class="label">TAM: AI HR subset</div></div>
-  <div class="stat-card green"><div class="number">3-9B &#8381;</div><div class="label">SAM: Mid-market + 1С/Битрикс24</div></div>
-  <div class="stat-card orange"><div class="number">12-72M &#8381;</div><div class="label">SOM Year 1 (реалистичный)</div></div>
+  <div class="stat-card accent"><div class="number">~25 млрд &#8381;</div><div class="label">TAM: Legal Tech РФ (2025, вкл. СЭД, правовые системы)</div></div>
+  <div class="stat-card cyan"><div class="number">1–3 млрд &#8381;</div><div class="label">SAM: AI-сегмент (анализ договоров, NER, автоматизация)</div></div>
+  <div class="stat-card orange"><div class="number">15–45M &#8381;</div><div class="label">SOM Year 1: 5–15 клиентов × ACV 3–5M &#8381;</div></div>
 </div>
+
+<p><strong>Логика расчёта SAM:</strong> ~15 000 компаний с юр. отделом от 5 человек в РФ. Из них ~3 000–5 000 с бюджетом на автоматизацию юр. процессов. При ACV 300K–1M руб = 1–3 млрд руб адресуемый рынок. Текущий AI-сегмент — ранняя стадия, Pravo.ru и КонсультантПлюс = поиск, не анализ.</p>
 
 <div class="warning">
-  <div class="warning-title">Честная оценка</div>
-  <p>AI-powered HR subset = $7-15M. Это рынок одного раунда финансирования. CAGR 35% впечатляет, абсолютные цифры — нет. MWS должен думать о workplace AI шире, чем только HR. Реально в Year 1: 10-20 клиентов, не 100.</p>
+  <div class="warning-title">Честная оценка Legal Tech AI</div>
+  <p>Рынок Legal AI в России — на стадии формирования. Отсутствие зрелых конкурентов может означать как «голубой океан», так и «рынок не готов платить». Harvey ($195M) работает на рынке США, где час юриста стоит $300–1 500. В РФ час in-house юриста — 1 500–5 000 руб. ROI считается иначе: не замена дорогого юриста, а <strong>ускорение обработки и снижение рисков пропущенных условий</strong> в сотнях договоров.</p>
 </div>
 
-<h3>Проникновение платформ (500-5000 чел)</h3>
+<h4>HR / Workplace AI (второй продукт — HR KB, Enterprise Search)</h4>
+<div class="stats">
+  <div class="stat-card accent"><div class="number">13 млрд &#8381;</div><div class="label">TAM: весь HR Tech РФ (2025)</div></div>
+  <div class="stat-card cyan"><div class="number">0,5–1,5 млрд &#8381;</div><div class="label">SAM: AI-сегмент HR (текущий размер, CAGR ~35%)</div></div>
+  <div class="stat-card orange"><div class="number">10–30M &#8381;</div><div class="label">SOM Year 2: 10–20 клиентов (после Legal Copilot)</div></div>
+</div>
+
+<p><strong>Пояснение к TAM/SAM:</strong> TAM = весь HR Tech (13 млрд руб). SAM = подмножество, где ИИ-решения уже применимы (автоматизация запросов, скрининг резюме, чат-боты). SAM < TAM — это текущий размер AI-ниши, не потенциальная конвертация всего HR Tech.</p>
+
+<div class="warning">
+  <div class="warning-title">Честная оценка HR AI</div>
+  <p>AI HR subset = 0,5–1,5 млрд руб ($5–15M). Это рынок одного раунда финансирования. CAGR 35% впечатляет, абсолютные цифры — нет. MWS AI правильно начинает с Legal Copilot (больший ACV, меньше конкуренции), а HR KB добавляет как второй продукт на той же платформе.</p>
+</div>
+
+<h3>Проникновение платформ (500–5 000 сотрудников)</h3>
 <div class="bar-chart">
-  <div class="bar-row"><span class="bar-label">1С (любой)</span><div class="bar-track"><div class="bar-fill" style="width:88%;background:var(--green)">85-90%</div></div></div>
-  <div class="bar-row"><span class="bar-label">1С:ЗУП (HR)</span><div class="bar-track"><div class="bar-fill" style="width:65%;background:var(--green)">60-70%</div></div></div>
-  <div class="bar-row"><span class="bar-label">Битрикс24</span><div class="bar-track"><div class="bar-fill" style="width:30%;background:var(--orange)">25-35%</div></div></div>
+  <div class="bar-row"><span class="bar-label">1С (любой)</span><div class="bar-track"><div class="bar-fill" style="width:88%;background:var(--green)">85–90%</div></div></div>
+  <div class="bar-row"><span class="bar-label">1С:Документооборот</span><div class="bar-track"><div class="bar-fill" style="width:45%;background:var(--accent)">40–50%</div></div></div>
+  <div class="bar-row"><span class="bar-label">1С:ЗУП (HR)</span><div class="bar-track"><div class="bar-fill" style="width:65%;background:var(--green)">60–70%</div></div></div>
+  <div class="bar-row"><span class="bar-label">Битрикс24</span><div class="bar-track"><div class="bar-fill" style="width:30%;background:var(--orange)">25–35%</div></div></div>
 </div>
 </section>
 
@@ -876,58 +990,74 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 </div>
 
 <div class="success-box">
-  <div class="success-title">Margin advantage MWS</div>
-  <p>On-prem open-source models: $0.01-0.03/1K tokens vs $0.01-0.06 у OpenAI API. Нет зависимости от API pricing. Russian labor costs ниже (ML: 300-600K руб/мес vs $25-40K в US).</p>
+  <div class="success-title">Преимущество по себестоимости MWS AI</div>
+  <p><strong>Инференс:</strong> open-source модели на собственном оборудовании — амортизация ~0,01–0,03 руб/1K токенов vs оплата API (GigaChat: 3,5–10 руб/1K, YandexGPT: 6–12 руб/1K). Нет зависимости от ценообразования провайдера.</p>
+  <p><strong>Команда:</strong> ML-инженер в РФ — 300–600K руб/мес (3,6–7,2M руб/год). Команда из 10 человек = 36–72M руб/год, или 18–36% от текущей выручки (200M руб). Это стандартный AI SaaS burn rate, не «преимущество» — но абсолютные расходы на порядок ниже, чем у западных конкурентов с аналогичной командой ($3–5M/год).</p>
 </div>
 
-<h3>P&L Model: MWS Year 1-3</h3>
+<h3>P&L модель: новые продукты MWS AI (год 1–3)</h3>
+<p><em>Это дополнительная выручка от новых продуктов (Legal Copilot, HR KB, Enterprise Search), а не замена текущей выручки MWS AI (~200M руб).</em></p>
 <div class="table-wrap">
 <table>
-<tr><th>Метрика</th><th>Year 1</th><th>Year 2</th><th>Year 3</th></tr>
-<tr><td>Clients</td><td>10-15</td><td>35-60</td><td>80-120</td></tr>
-<tr><td>ARR</td><td>$250-375K</td><td>$875K-1.5M</td><td>$2-3M</td></tr>
-<tr><td>Gross Margin</td><td>55-65%</td><td>60-70%</td><td>65-75%</td></tr>
-<tr><td>Monthly Burn</td><td style="color:var(--red)">$30-50K</td><td style="color:var(--orange)">$25-50K</td><td style="color:var(--green)">~breakeven</td></tr>
-<tr><td>Team</td><td>8-12</td><td>15-20</td><td>25-35</td></tr>
+<tr><th>Метрика</th><th>Год 1</th><th>Год 2</th><th>Год 3</th></tr>
+<tr><td>Клиенты</td><td>5–15</td><td>25–50</td><td>60–100</td></tr>
+<tr><td>Средний ACV</td><td>3–5M &#8381;</td><td>2,5–4M &#8381;</td><td>2–3,5M &#8381; (больше мидмаркета)</td></tr>
+<tr><td>Новая годовая выручка</td><td style="color:var(--orange)">15–75M &#8381;</td><td style="color:var(--green)">60–200M &#8381;</td><td style="color:var(--green)">120–350M &#8381;</td></tr>
+<tr><td>Валовая маржа</td><td>55–65%</td><td>60–70%</td><td>65–75%</td></tr>
+<tr><td>Расходы/мес (команда + инфра)</td><td style="color:var(--red)">3–5M &#8381;</td><td style="color:var(--orange)">4–7M &#8381;</td><td style="color:var(--green)">~окупаемость</td></tr>
+<tr><td>Команда</td><td>8–12</td><td>15–20</td><td>25–35</td></tr>
 </table>
 </div>
-<p><strong>Breakeven:</strong> ~80-100 клиентов при ACV $25K. Seed round 50-100M руб = 18-24 мес runway.</p>
+
+<p><strong>Точка безубыточности</strong> нового направления: ~30–40 клиентов при ACV 3M руб (= 90–120M руб выручки при расходах 50–85M руб/год). При ACV 2M руб (мидмаркет) — 50–60 клиентов.</p>
+
+<div class="verdict">
+  <div class="verdict-title">Модель финансирования</div>
+  <p>MWS AI — подразделение МТС/МВС, не независимый стартап. Финансирование — <strong>внутренний бюджет</strong>, а не венчурный раунд. Это означает: нет давления на рост любой ценой, но есть давление на P&L каждого квартала. Расходы на новое направление (36–60M руб/год = 18–30% текущей выручки) требуют защиты перед руководством с чётким ROI-обоснованием.</p>
+</div>
 </section>
 
 <!-- 10. COMPETITIVE TIMELINE -->
 <section id="competitive">
-<h2>10. Competitive Response Timeline</h2>
+<h2>10. Конкурентный таймлайн</h2>
 
-<h3>Текущие позиции</h3>
+<h3>Текущие позиции (Legal AI + Workplace AI)</h3>
 <div class="table-wrap">
 <table>
-<tr><th></th><th>GigaChat (Sber)</th><th>YandexGPT</th><th>MWS target</th></tr>
-<tr><td><strong>Фокус</strong></td><td>Banking, fintech</td><td>Cloud infra, horizontal</td><td style="color:var(--cyan)">HR/workplace vertical</td></tr>
-<tr><td><strong>Deploy</strong></td><td>On-prem/cloud/hybrid</td><td>Cloud-only</td><td>On-prem/cloud</td></tr>
-<tr><td><strong>HR product</strong></td><td style="color:var(--red)">Нет</td><td style="color:var(--red)">Нет (generic KB)</td><td style="color:var(--green)">Core focus</td></tr>
-<tr><td><strong>1С integration</strong></td><td style="color:var(--green)">Есть</td><td style="color:var(--red)">Нет</td><td style="color:var(--orange)">Нужно строить</td></tr>
-<tr><td><strong>Cross-system search</strong></td><td style="color:var(--red)">Нет</td><td style="color:var(--red)">Нет</td><td style="color:var(--orange)">Target Phase 2-3</td></tr>
+<tr><th></th><th>GigaChat (Сбер)</th><th>YandexGPT</th><th>MWS AI (цель)</th></tr>
+<tr><td><strong>Фокус</strong></td><td>Банки, финтех</td><td>Облачная инфра, горизонтальный</td><td style="color:var(--cyan)">Вертикальные ИИ-продукты (Legal, HR, Search)</td></tr>
+<tr><td><strong>Развёртывание</strong></td><td>On-prem / облако / гибрид</td><td>Только облако</td><td>On-premise (облако рассматривается)</td></tr>
+<tr><td><strong>Legal AI</strong></td><td style="color:var(--red)">Нет продукта</td><td style="color:var(--red)">Нет продукта</td><td style="color:var(--green)">Legal Copilot — первый продукт</td></tr>
+<tr><td><strong>HR AI</strong></td><td style="color:var(--red)">Нет</td><td style="color:var(--red)">Нет (generic KB)</td><td style="color:var(--orange)">HR KB — второй продукт</td></tr>
+<tr><td><strong>Интеграция с 1С</strong></td><td style="color:var(--green)">Есть</td><td style="color:var(--red)">Нет</td><td style="color:var(--orange)">Нужно строить</td></tr>
+<tr><td><strong>Кросс-системный поиск</strong></td><td style="color:var(--red)">Нет</td><td style="color:var(--red)">Нет</td><td style="color:var(--orange)">Фаза 3–4</td></tr>
 </table>
 </div>
 
-<h3>Window of Opportunity</h3>
+<h3>Окно возможностей: 6–12 месяцев</h3>
 <pre style="font-size:13px;line-height:1.6">
-Сейчас          6 мес          12 мес          18 мес          24 мес
-  |──────────────|──────────────|──────────────|──────────────|
-  |              |              |              |              |
-  | MVP +        | 10-20        | 50+ clients  | Knowledge    |
-  | first 5      | clients +    | + connectors | graph moat   |
-  | clients      | 1C connector | built        | OR commodity |
-  |              |              |              |              |
-  |  Yandex HR templates?      | Sber react?  | 1C react?    |
+Сейчас          6 мес           12 мес          18 мес          24 мес
+  |──────────────|───────────────|───────────────|───────────────|
+  |              |               |               |               |
+  | Legal Copilot| 10–15 клиентов| 30+ клиентов  | Граф знаний   |
+  | MVP + 3–5    | + коннектор   | + партнёрский | = барьер      |
+  | пилотов      | 1С:Документооб| канал         | ИЛИ commodity  |
+  |              |               |               |               |
+  | Yandex Legal?| Сбер реагирует?| 1С AI модуль?|               |
+  |  (6–12 мес)  |  (12–18 мес)  |  (18–24 мес) |               |
 </pre>
 
-<h3>Сценарии</h3>
+<div class="warning">
+  <div class="warning-title">Почему 6–12, а не 12–18 месяцев</div>
+  <p>Прежняя оценка (12–18 мес) была оптимистичной. Yandex может запустить шаблоны Legal AI за 6–12 мес (вероятность 40–50%) — у них модели, облако и база клиентов. 12–18 мес — это время до <strong>зрелости</strong> конкурентных предложений, а не до их появления. Окно для захвата первых клиентов и построения глубоких интеграций = <strong>6–12 месяцев</strong>.</p>
+</div>
+
+<h3>Сценарии конкурентного ответа</h3>
 <div class="card-grid">
-  <div class="card"><h4>Sber HR AI <span style="color:var(--orange)">30-40%</span></h4><p>12-18 мес от решения. Trigger: MWS докажет PMF с 50+ клиентами. Слабость: bureaucracy, "bank not HR vendor".</p></div>
-  <div class="card"><h4>Yandex HR templates <span style="color:var(--red)">40-50%</span></h4><p>6-12 мес. Obvious use case. Слабость: cloud-only, нет 1С/Битрикс24, generic.</p></div>
-  <div class="card"><h4>1С AI module <span style="color:var(--orange)">20-30%</span></h4><p>18-24 мес. Legacy tech, нет ML. Franchise model фрагментирует R&D.</p></div>
-  <div class="card"><h4>Стартап-конкурент <span style="color:var(--red)">50-60%</span></h4><p>Already happening. AutoFAQ, chatbots. Слабость: GPT-wrapper, low moat.</p></div>
+  <div class="card"><h4>Сбер: Legal/HR AI <span style="color:var(--orange)">30–40%</span></h4><p>12–18 мес от решения. Триггер: MWS докажет спрос с 30+ клиентами. Слабость: бюрократия, «банк, а не Legal Tech вендор». Сила: GigaChat + инфраструктура + база клиентов.</p></div>
+  <div class="card"><h4>Yandex: шаблоны Legal/HR <span style="color:var(--red)">40–50%</span></h4><p>6–12 мес. Очевидный сценарий. Слабость: только облако, нет 1С-интеграции, generic-решения без глубины в российском праве. Сила: модели + облако + скорость.</p></div>
+  <div class="card"><h4>1С: ИИ-модуль <span style="color:var(--orange)">20–30%</span></h4><p>18–24 мес. Устаревший стек, нет ML-компетенций. Франчайзинговая модель фрагментирует R&D. Но 85–90% проникновение — если запустят, это серьёзно.</p></div>
+  <div class="card"><h4>Стартап-конкурент <span style="color:var(--red)">50–60%</span></h4><p>Уже происходит: AutoFAQ (generic KB), чат-боты. Слабость: обёртка над LLM без глубины, низкий барьер. Но могут занять нишу до MWS AI.</p></div>
 </div>
 </section>
 
@@ -946,22 +1076,24 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 </table>
 </div>
 
-<h3>On-Prem конфигурации</h3>
+<h3>Конфигурации для on-premise</h3>
 <div class="card-grid">
   <div class="card" style="border-color:rgba(52,211,153,0.3)">
-    <h4>Бюджетный: 1.5-2M &#8381;</h4>
-    <p>2x RTX 4090 + 128GB RAM + 2TB NVMe<br>Mistral 7B quantized + Qdrant<br>Достаточно для HR Q&A</p>
-    <span class="tag tag-mws">Рекомендовано для старта</span>
+    <h4>Бюджетный: 3–5M &#8381;</h4>
+    <p>2x RTX 4090 + 128GB RAM + 2TB NVMe<br>Mistral 7B quantized + Qdrant<br>Достаточно для Legal Copilot MVP</p>
+    <p style="color:var(--text2);font-size:12px">MSRP ~1,5–2M руб, но RTX 4090 тоже под ограничениями — реальная цена с серым импортом ×2–2,5</p>
+    <span class="tag tag-mws">Рекомендовано для пилотов</span>
   </div>
-  <div class="card">
-    <h4>Production: 15-25M &#8381;</h4>
-    <p>4x A100 80GB + 256GB RAM + 4TB NVMe<br>Llama 3 70B + full RAG stack<br>Grey market pricing</p>
+  <div class="card" style="border-color:rgba(248,113,113,0.3)">
+    <h4>Production: 30–60M &#8381;</h4>
+    <p>4x A100 80GB + 256GB RAM + 4TB NVMe<br>Llama 3 70B / Qwen3-235B + полный RAG-стек</p>
+    <p style="color:var(--text2);font-size:12px">MSRP ~15–25M руб, но A100 запрещены (BIS) — серый рынок ×2–4. Реальная цена 30–60M руб</p>
   </div>
 </div>
 
 <div class="warning">
-  <div class="warning-title">GPU Constraint</div>
-  <p>NVIDIA H100/A100 официально запрещены (BIS). Grey market: 2-4x MSRP. Все cloud-провайдеры работают с конечным запасом. Supply ceiling ужесточается.</p>
+  <div class="warning-title">Санкционные ограничения на GPU</div>
+  <p>NVIDIA H100/A100 официально запрещены (BIS). RTX 4090 — серая зона. Серый рынок: <strong>×2–4 от MSRP</strong>. Все цены выше учитывают эту наценку. Альтернативы: китайские GPU (Huawei Ascend — ограниченная совместимость), аренда GPU у MWS Cloud (если облачная стратегия будет согласована). Запас на рынке ограничен и сужается.</p>
 </div>
 </section>
 
@@ -1015,19 +1147,19 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 <h3>Что НЕ закрыто никем</h3>
 <div class="card-grid">
   <div class="card" style="border-color:rgba(52,211,153,0.3)">
-    <h4>Cross-system search</h4>
-    <p>1С + Битрикс24 + Telegram + files. Glean не в РФ. Никто не делает.</p>
-    <span class="tag tag-mws">GAP = opportunity</span>
+    <h4>Legal AI для российского права</h4>
+    <p>Анализ договоров с NER, извлечением условий, проверкой рисков по ГК РФ. Pravo.ru и КонсультантПлюс = поиск, не анализ. Зрелого продукта уровня Harvey нет.</p>
+    <span class="tag tag-mws">GAP = первый продукт MWS AI</span>
   </div>
   <div class="card" style="border-color:rgba(52,211,153,0.3)">
-    <h4>Compliance-grade HR AI</h4>
-    <p>AI с валидацией по ТК РФ. AutoFAQ = generic, не HR-specific.</p>
-    <span class="tag tag-mws">GAP = opportunity</span>
+    <h4>Кросс-системный поиск</h4>
+    <p>1С + Битрикс24 + Telegram + файлы. Glean не работает в РФ. Никто не строит единый поиск по корпоративным системам.</p>
+    <span class="tag tag-mws">GAP = долгосрочный барьер</span>
   </div>
   <div class="card" style="border-color:rgba(52,211,153,0.3)">
-    <h4>Permission-aware Knowledge Graph</h4>
-    <p>Across 1С + Битрикс24. Требует deep integration. Никто не строит.</p>
-    <span class="tag tag-mws">GAP = long-term moat</span>
+    <h4>Граф знаний с учётом прав доступа</h4>
+    <p>Поиск и ответы с учётом прав доступа пользователя по AD/LDAP. Требует глубокой интеграции с 1С + Битрикс24. Никто не строит.</p>
+    <span class="tag tag-mws">GAP = долгосрочный барьер</span>
   </div>
 </div>
 </section>
@@ -1038,57 +1170,82 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 
 <div class="card-grid">
   <div class="card">
-    <h4>Scoring Matrix</h4>
-    <p><strong>Было:</strong> Cross-system search = 4.0 = best entry.<br><strong>Стало:</strong> Score = DESTINATION defensibility, не starting point. Start low-moat/fast (HR KB), move to high-moat за 18 мес.</p>
+    <h4>Точка входа</h4>
+    <p><strong>Было:</strong> HR KB — быстрый вход, низкий барьер.<br><strong>Стало:</strong> Legal Copilot — клиент не может сделать сам. HR KB = commodity, конкурирует с Confluence FAQ. Legal AI = глубокая экспертиза, которую не воспроизведёт бот.</p>
   </div>
   <div class="card">
-    <h4>"Palantir bootcamp light"</h4>
-    <p><strong>Было:</strong> 5-day bootcamp, 75% conversion.<br><strong>Стало:</strong> 2-3 часовой workshop. Target conversion: 30-40%, не 75%.</p>
+    <h4>Конверсия воркшопов</h4>
+    <p><strong>Было:</strong> 75% (Palantir) как ориентир.<br><strong>Стало:</strong> 30–40% — реалистично для 2–3 часовых сессий в российском мидмаркете. 75% = 5-дневный интенсив Fortune 500 с ACV >$1M.</p>
   </div>
   <div class="card">
-    <h4>"Российское окно"</h4>
-    <p><strong>Было:</strong> Санкции помогают.<br><strong>Стало:</strong> Окно реальное, но потому что западные не зайдут + Sber/Yandex = horizontal. Нужен Реестр отечественного ПО.</p>
+    <h4>Окно возможностей</h4>
+    <p><strong>Было:</strong> 12–18 месяцев.<br><strong>Стало:</strong> 6–12 мес до появления конкурентных предложений. 12–18 мес — до их зрелости. Yandex может отреагировать за 6 мес с вероятностью 40–50%.</p>
   </div>
   <div class="card">
-    <h4>Competitive Diagram</h4>
-    <p><strong>Было:</strong> MWS = sweet spot.<br><strong>Стало:</strong> Year 1: рядом с AutoFAQ. Year 3: sweet spot ТОЛЬКО если connectors + knowledge graph built.</p>
+    <h4>Долларовые метрики</h4>
+    <p><strong>Было:</strong> ACV $25K, ARR $2–3M, зарплаты $350K+.<br><strong>Стало:</strong> ACV 3–5M руб, выручка 15–75M руб (год 1), выездной инженер 7–11M руб/год. Российские зарплаты и чеки — не американские.</p>
+  </div>
+  <div class="card">
+    <h4>Harvey как аналог</h4>
+    <p><strong>Было:</strong> Harvey = $195M, Legal Copilot = аналог.<br><strong>Стало:</strong> Аналогия по продукту, не по экономике. Час юриста в РФ: 1 500–5 000 руб (не $300–1 500). ROI Legal Copilot строится на объёмах (сотни договоров) и снижении рисков, а не на замене дорогого юриста.</p>
+  </div>
+  <div class="card">
+    <h4>Облачная стратегия</h4>
+    <p><strong>Было:</strong> Облако = согласованная стратегия.<br><strong>Стало:</strong> On-premise = текущая реальность. Облако на MWS Cloud = рассматриваемая опция, требует переговоров. Без облака MWS AI ограничен крупным enterprise и госсектором.</p>
   </div>
 </div>
 </section>
 
 <!-- 15. ROI -->
 <section id="roi">
-<h2>15. ROI Narrative для CFO</h2>
+<h2>15. ROI для финансового директора</h2>
 
-<h3>ROI калькулятор (компания 1,500 чел)</h3>
+<h3>Legal Copilot: ROI калькулятор (юр. отдел 10 человек)</h3>
 <div class="table-wrap">
 <table>
-<tr><th>Метрика</th><th>Без MWS</th><th>С MWS</th><th>Delta</th></tr>
-<tr><td>Автоматизация запросов</td><td>0%</td><td>50-70%</td><td style="color:var(--green)">&#x2191;</td></tr>
-<tr><td>FTE на обработку</td><td>3</td><td>1-1.5</td><td style="color:var(--green)">-1.5-2 FTE</td></tr>
-<tr><td>Время ответа</td><td>2-48 часов</td><td>&lt;1 мин</td><td style="color:var(--green)">99%&#x2193;</td></tr>
-<tr><td>Ошибки в ответах</td><td>5-15%</td><td>&lt;3%</td><td style="color:var(--green)">60-80%&#x2193;</td></tr>
-<tr><td><strong>Экономия/мес</strong></td><td></td><td></td><td style="color:var(--green)"><strong>150-300K руб</strong></td></tr>
+<tr><th>Метрика</th><th>Без Legal Copilot</th><th>С Legal Copilot</th><th>Разница</th></tr>
+<tr><td>Время анализа договора</td><td>2–4 часа</td><td>15–30 мин</td><td style="color:var(--green)">−75–85%</td></tr>
+<tr><td>Договоров в месяц на юриста</td><td>30–50</td><td>80–150</td><td style="color:var(--green)">×2–3</td></tr>
+<tr><td>Пропущенные рисковые условия</td><td>5–15% (усталость, объём)</td><td>&lt;2% (системная проверка)</td><td style="color:var(--green)">−80–90%</td></tr>
+<tr><td>Экономия FTE юристов</td><td>—</td><td>2–3 FTE</td><td style="color:var(--green)">при зп 150–300K руб/мес</td></tr>
+<tr><td><strong>Экономия/мес</strong></td><td></td><td></td><td style="color:var(--green)"><strong>300–900K руб</strong></td></tr>
+<tr><td><strong>Стоимость MWS AI</strong></td><td></td><td></td><td>75–150K руб/мес (10 юристов × 7,5–15K)</td></tr>
 </table>
 </div>
 
 <div class="stats">
-  <div class="stat-card green"><div class="number">6-12 мес</div><div class="label">Payback period</div></div>
-  <div class="stat-card green"><div class="number">1.5-2</div><div class="label">FTE экономия</div></div>
-  <div class="stat-card cyan"><div class="number">150-300K</div><div class="label">руб/мес экономия</div></div>
+  <div class="stat-card green"><div class="number">3–6 мес</div><div class="label">Срок окупаемости</div></div>
+  <div class="stat-card green"><div class="number">2–3</div><div class="label">Высвобожденных FTE юристов</div></div>
+  <div class="stat-card cyan"><div class="number">300–900K</div><div class="label">руб/мес экономия</div></div>
 </div>
 
-<blockquote>"Мы не заменяем HR. Мы убираем 50-70% рутинных запросов, чтобы HR занимался стратегическими задачами."</blockquote>
+<blockquote>"Мы не заменяем юристов. Мы убираем рутинный анализ типовых договоров, чтобы юристы занимались сложными сделками и стратегическими вопросами. Один пропущенный рисковый пункт в договоре на 50M руб может стоить дороже, чем годовая подписка."</blockquote>
 
-<h3>Метрики первых 30 дней</h3>
+<h3>HR KB: ROI калькулятор (второй продукт, компания 1 500 чел)</h3>
 <div class="table-wrap">
 <table>
-<tr><th>Метрика</th><th>Target</th></tr>
-<tr><td>Time-to-first-value</td><td>&lt;7 дней</td></tr>
-<tr><td>DAU к Day 30</td><td>&gt;30%</td></tr>
-<tr><td>Auto-resolution rate</td><td>&gt;40%</td></tr>
-<tr><td>User satisfaction</td><td>&gt;4.0/5</td></tr>
-<tr><td>Accuracy</td><td>&gt;95%</td></tr>
+<tr><th>Метрика</th><th>Без HR KB</th><th>С HR KB</th><th>Разница</th></tr>
+<tr><td>Автоматизация запросов</td><td>0%</td><td>50–70%</td><td style="color:var(--green)">&#x2191;</td></tr>
+<tr><td>FTE на обработку</td><td>3</td><td>1–1,5</td><td style="color:var(--green)">−1,5–2 FTE</td></tr>
+<tr><td>Время ответа</td><td>2–48 часов</td><td>&lt;1 мин</td><td style="color:var(--green)">−99%</td></tr>
+<tr><td><strong>Экономия/мес</strong></td><td></td><td></td><td style="color:var(--green)"><strong>150–300K руб</strong></td></tr>
+</table>
+</div>
+
+<div class="warning">
+  <div class="warning-title">Почему Legal Copilot ROI сильнее</div>
+  <p>Legal Copilot: экономия 300–900K руб/мес при стоимости 75–150K руб/мес = <strong>ROI 3–6×</strong>. HR KB: экономия 150–300K руб/мес при стоимости 150–450K руб/мес (1 500 чел × 100–300 руб) = <strong>ROI 0,5–2×</strong>. У Legal Copilot значительно более убедительный бизнес-кейс для финансового директора.</p>
+</div>
+
+<h3>Метрики первых 30 дней (Legal Copilot)</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Метрика</th><th>Цель</th></tr>
+<tr><td>Время до первой ценности</td><td>&lt;7 дней (первый проанализированный договор)</td></tr>
+<tr><td>Использование юристами к 30-му дню</td><td>&gt;60% юр. отдела</td></tr>
+<tr><td>Доля автоматизированного анализа</td><td>&gt;40% типовых договоров</td></tr>
+<tr><td>Удовлетворённость пользователей</td><td>&gt;4,0/5</td></tr>
+<tr><td>Точность извлечения условий</td><td>&gt;95%</td></tr>
 </table>
 </div>
 </section>
@@ -1118,44 +1275,45 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
   <div class="bar-row"><span class="bar-label">No ROI story</span><div class="bar-track"><div class="bar-fill" style="width:10%;background:var(--orange)">~10%</div></div></div>
 </div>
 
-<h3>План по месяцам</h3>
+<h3>План по месяцам (Legal Copilot, on-premise)</h3>
 <div class="timeline">
-  <div class="timeline-item success"><div class="time">Month 1-2: Foundation</div><div class="desc">Список personal connections (30-50). Telegram-канал. Promo pilot: загрузить публичные HR-документы 5 target-компаний.</div></div>
-  <div class="timeline-item"><div class="time">Month 2-3: Design Partners</div><div class="desc">10-15 outreach → 5-7 meetings → 3-5 design partners. Workshop (2-3 ч) на реальных данных.</div></div>
-  <div class="timeline-item"><div class="time">Month 3-5: Pilots</div><div class="desc">3-5 structured pilots (2-4 нед, 50-100 users). Weekly ROI reports. Meet exec sponsors.</div></div>
-  <div class="timeline-item"><div class="time">Month 5-7: Conversion</div><div class="desc">Convert 2-3 pilots to paid. 100-300 руб/чел/мес, quarterly billing. Get reference commitments.</div></div>
-  <div class="timeline-item success"><div class="time">Month 7-10: Referral + Events</div><div class="desc">5-10 warm intros from clients. Speak at HR Tech Russia / ЦИПР. Target: 7-10 paying.</div></div>
+  <div class="timeline-item success"><div class="time">Месяц 1–2: Фундамент</div><div class="desc">Список личных контактов (30–50 юр. директоров и GC). Telegram-канал «Legal Tech + AI». Демо-стенд: загрузить типовые договоры 5 целевых компаний (публичные шаблоны).</div></div>
+  <div class="timeline-item"><div class="time">Месяц 2–3: Дизайн-партнёры</div><div class="desc">10–15 контактов → 5–7 встреч → 3–5 дизайн-партнёров. Демо-сессия (2–3 ч) на реальных договорах клиента. Цель: «показать 3 риска в вашем договоре, которые юрист пропустил».</div></div>
+  <div class="timeline-item"><div class="time">Месяц 3–5: Пилоты</div><div class="desc">3–5 структурированных пилотов (2–4 нед., развёртывание в контуре клиента, 5–15 юристов). Еженедельные отчёты ROI (часы × стоимость). Встречи с юр. директором и финансовым директором.</div></div>
+  <div class="timeline-item"><div class="time">Месяц 5–7: Конвертация</div><div class="desc">Конвертация 2–3 пилотов в платные контракты. 5–15K руб/юрист/мес, квартальная оплата. Получить согласие на публичный кейс.</div></div>
+  <div class="timeline-item success"><div class="time">Месяц 7–10: Рефералы + события</div><div class="desc">5–10 тёплых рекомендаций от клиентов. Выступления на Legal Tech Russia / ЦИПР / Петербургском юридическом форуме. Цель: 7–10 платящих клиентов.</div></div>
 </div>
 
-<h3>Российская специфика</h3>
+<h3>Российская специфика продаж</h3>
 <div class="table-wrap">
 <table>
 <tr><th>Фактор</th><th>Россия</th><th>США</th></tr>
-<tr><td>Relationships</td><td style="color:var(--red)"><strong>Критично.</strong> Trust-first culture</td><td>Product can compensate</td></tr>
-<tr><td>First meeting</td><td><strong>In-person</strong> предпочтительнее</td><td>Video call standard</td></tr>
-<tr><td>Payment</td><td>Quarterly. Prepay from unknown = rare</td><td>Annual prepay common</td></tr>
-<tr><td>References</td><td style="color:var(--red)"><strong>Same-industry = решающий</strong></td><td>Important not blocking</td></tr>
-<tr><td>Certification</td><td><strong>Реестр отечественного ПО</strong></td><td>SOC 2 / ISO</td></tr>
+<tr><td>Отношения</td><td style="color:var(--red)"><strong>Критично.</strong> Сначала доверие, потом продукт</td><td>Продукт может компенсировать</td></tr>
+<tr><td>Первая встреча</td><td><strong>Очная</strong> предпочтительнее</td><td>Видеозвонок — стандарт</td></tr>
+<tr><td>Оплата</td><td>Поквартальная. Предоплата от незнакомого = редкость</td><td>Годовая предоплата — норма</td></tr>
+<tr><td>Рекомендации</td><td style="color:var(--red)"><strong>Из той же отрасли = решающий фактор</strong></td><td>Важно, но не блокирует</td></tr>
+<tr><td>Сертификация</td><td><strong>Реестр отечественного ПО</strong> — обязателен для госсектора</td><td>SOC 2 / ISO</td></tr>
+<tr><td>Развёртывание</td><td><strong>On-premise по умолчанию</strong> — ИБ-требования</td><td>Облако по умолчанию</td></tr>
 </table>
 </div>
 
-<p><strong>Top каналы (по убыванию):</strong> Personal intro → Industry conference → Telegram community → LinkedIn → Cold email</p>
+<p><strong>Каналы (по убыванию эффективности):</strong> личная рекомендация → отраслевая конференция → Telegram-сообщество → LinkedIn → холодное письмо</p>
 </section>
 
 <!-- CHECKLIST -->
 <section id="checklist">
-<h2>Checklist: Первые 90 дней</h2>
+<h2>Чеклист: первые 90 дней (Legal Copilot, on-premise)</h2>
 <ul class="checklist">
-  <li>Подать на включение в Реестр отечественного ПО (Минцифры)</li>
-  <li>Развернуть MVP на on-prem (2x RTX 4090 + Mistral/Saiga + Qdrant)</li>
-  <li>Загрузить ТК РФ + типовые HR-документы как base knowledge</li>
-  <li>Построить 1С:ЗУП connector (read-only: оргструктура, данные сотрудников)</li>
-  <li>Провести 5-10 workshops с target companies</li>
-  <li>Закрыть 3-5 pilot agreements (30 дней, nominal fee)</li>
-  <li>Установить метрики для каждого пилота (DAU, resolution rate, satisfaction)</li>
-  <li>Подготовить ROI-отчет для CFO каждого пилотного клиента</li>
-  <li>Запустить Telegram-канал (AI в HR, полезный контент)</li>
-  <li>Начать Битрикс24 connector (Phase 2)</li>
+  <li>Подать на включение в Реестр отечественного ПО (Минцифры) — открывает госсектор</li>
+  <li>Развернуть MVP Legal Copilot на on-prem стенде (Agents Platform + open-source LLM + Legal NER + Qdrant)</li>
+  <li>Загрузить ГК РФ + типовые договоры (поставка, аренда, услуги, подряд) как базовые знания</li>
+  <li>Построить коннектор к системам хранения договоров (1С:Документооборот, SharePoint, СЭД/КЭДО) — read-only</li>
+  <li>Провести 5–10 демо-сессий с целевыми компаниями на их реальных договорах</li>
+  <li>Закрыть 3–5 пилотных соглашений (30 дней, номинальная плата, развёртывание в контуре клиента)</li>
+  <li>Установить метрики для каждого пилота (% автоматизированного анализа, точность извлечения условий, удовлетворённость юристов)</li>
+  <li>Подготовить ROI-отчёт для финансового директора каждого пилотного клиента (часы юристов × стоимость = экономия)</li>
+  <li>Запустить Telegram-канал (Legal Tech + AI для юристов, полезный контент)</li>
+  <li>Начать проработку облачной версии как опцию для клиентов без инфраструктуры (не согласовано — требует переговоров с MWS Cloud)</li>
 </ul>
 </section>
 
