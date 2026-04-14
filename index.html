@@ -187,6 +187,7 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
   <div class="nav-group">
     <div class="nav-group-title">Приложения</div>
     <a class="nav-link" href="#checklist">Checklist 90 дней</a>
+    <a class="nav-link" href="#a16z-bets">a16z: На что ставить <span class="badge badge-new">NEW</span></a>
   </div>
 </nav>
 
@@ -1298,8 +1299,139 @@ pre { background: var(--surface); border: 1px solid var(--border); border-radius
 </ul>
 </section>
 
+<!-- a16z BETS -->
+<section id="a16z-bets">
+<h2>a16z: На что делать ставки</h2>
+
+<div class="warning">
+  <div class="warning-title">Дисклеймер</div>
+  <p>Этот раздел сгенерирован <strong>AI-агентом в стиле a16z-аналитика</strong> на основе всех данных исследования (50+ компаний, 7 рынков, 2024-2026). Это не позиция a16z, не инвестиционная рекомендация и не согласованная стратегия MWS AI. Это синтетический стресс-тест: «что бы сказал партнёр фонда уровня a16z, прочитав всё исследование?» Используйте как провокацию для стратегической дискуссии, не как руководство к действию.</p>
+</div>
+
+<h3>Мега-тренды: что неизбежно (3-5 лет)</h3>
+
+<div class="card-grid">
+  <div class="card">
+    <h4>1. Implementation gap = рынок на $100B+</h4>
+    <p>95% AI-инвестиций дают нулевой EBIT-эффект. 42% инициатив свёрнуты. M365 Copilot — 40-70% лицензий не используются. <strong>Модели — commodity. Внедрение — bottleneck.</strong> Вакансии FDE +1 165% за год. Accenture: $2,7B на GenAI consulting.</p>
+  </div>
+  <div class="card">
+    <h4>2. Sovereign AI — $1,5 трлн глобально</h4>
+    <p>Каждый регион строит sovereign infrastructure + models + platform. Mistral ($400M ARR), Helsing (€12B), G42 ($15,2B с Microsoft), Япония ($135B), Saudi ($100B). <strong>Фрагментация AI — не баг, а фича:</strong> каждый sovereign рынок = отдельный winner-take-most.</p>
+  </div>
+  <div class="card">
+    <h4>3. Distribution через рабочие платформы</h4>
+    <p>Китай доказал: DingTalk → сотни млн пользователей. Feishu → 30+ отраслей. WeCom → 10B+ agent tool calls/day. <strong>AI встраивается в существующий workflow, а не создаёт новый.</strong></p>
+  </div>
+  <div class="card">
+    <h4>4. Pricing → «цифровой труд»</h4>
+    <p>Per-seat: 21% → 15%. Гибридная: 27% → 41%. Salesforce Flex — human seats и AI credits на одном договоре. <strong>Покупатель смещается из IT в COO/CHRO.</strong></p>
+  </div>
+  <div class="card">
+    <h4>5. Price war = модели — commodity</h4>
+    <p>DeepSeek: $0,55/1M tokens (−60-80% vs OpenAI). Alibaba: Qwen-Long −97%. Zhipu: отрицательная маржа. <strong>Value accrues к data layer, integration layer, workflow layer.</strong></p>
+  </div>
+</div>
+
+<h3>Ставки первого порядка: куда деньги идут сейчас</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>Компания</th><th>ARR</th><th>Сегмент</th><th>Рост</th></tr>
+<tr><td><strong>Harvey</strong></td><td>$195M</td><td>Legal AI</td><td>3,9x YoY</td></tr>
+<tr><td><strong>Sierra</strong></td><td>$100M</td><td>Customer Support</td><td>$0→$100M за 7 кв.</td></tr>
+<tr><td><strong>Cursor</strong></td><td>~$2B</td><td>Code AI</td><td>удвоился за 3 мес</td></tr>
+<tr><td><strong>Devin</strong></td><td>$73M</td><td>Code AI</td><td>$1M→$73M за 9 мес</td></tr>
+<tr><td><strong>Glean</strong></td><td>$200M</td><td>Enterprise Search</td><td>удвоился за 9 мес</td></tr>
+<tr><td><strong>Synthesia</strong></td><td>$146M</td><td>Video AI</td><td>PLG → enterprise</td></tr>
+</table>
+</div>
+
+<p><strong>Что объединяет победителей:</strong> (1) узкий well-defined workflow, (2) измеримый ROI за 30 дней, (3) pricing привязан к ценности, не к seats, (4) data moat через usage.</p>
+
+<h3>Ставки второго порядка: что не очевидно</h3>
+
+<div class="card-grid">
+  <div class="card" style="border-color:rgba(99,102,241,0.4)">
+    <h4>«1С + Битрикс24 connector layer» = локальный Glean</h4>
+    <p>В России нет Glean, нет M365 Copilot. 85-90% компаний на 1С. Telegram — де-факто корпоративный мессенджер. Ни GigaChat, ни YandexGPT не предлагают unified cross-system search. Glean достиг $200M ARR на этом паттерне: deal dynamics <strong>$60K → $500K за 9 месяцев</strong>. В России эту нишу никто не занял.</p>
+    <span class="tag tag-mws">Главная ставка для MWS AI</span>
+  </div>
+  <div class="card" style="border-color:rgba(99,102,241,0.4)">
+    <h4>Китайский паттерн: AI через work platform</h4>
+    <p>ByteDance (Doubao): 227M MAU, 30+ отраслей. Tencent: 10B+ agent tool calls/day через WeChat/WeCom. <strong>Инвестировать в AI как native layer внутри существующих workflow-платформ</strong>, а не как standalone tool.</p>
+  </div>
+  <div class="card" style="border-color:rgba(99,102,241,0.4)">
+    <h4>СНГ как expansion market</h4>
+    <p>Казахстан: $1,8B к 2030. Узбекистан: $1,25B. Турция: $3,95B. Те же стеки (1С, Битрикс24), тот же язык. <strong>Суммарный TAM СНГ+Турция к 2030: $7,5B+.</strong> Ни один глобальный AI-игрок не фокусируется здесь.</p>
+  </div>
+  <div class="card" style="border-color:rgba(99,102,241,0.4)">
+    <h4>Defense AI — biggest TAM, smallest attention</h4>
+    <p>Helsing: €12B valuation, target 40-50% margins vs 5-10% у традиционных contractors. Рынок закрыт для большинства по compliance → natural scarcity premium.</p>
+  </div>
+</div>
+
+<h3>Ставки для MWS AI конкретно</h3>
+
+<div class="success-box">
+  <div class="success-title">Удвоиться</div>
+  <p><strong>1. Legal Agent on-prem (NOW).</strong> Yandex Нейро Юрист — cloud-only, generic. MWS AI → on-prem compliance-grade legal agent для компаний, которым запрещено отправлять документы в облако (ФЗ-152, гостайна, банковская тайна). Глубокие интеграции: Directum, Docsvision, Тезис, 1С:Документооборот.</p>
+  <p><strong>2. Cross-system search с 1С + Битрикс24 (SOON, 6-18 мес).</strong> Score 4.0 — высший в матрице defensibility. Knowledge Graph > RAG. Единственный path к $100M+ бизнесу из российского рынка.</p>
+  <p><strong>3. Workshop-led sales (NOW).</strong> Palantir: 1 300 bootcamps, 75% конверсия. 3-5 дневные workshops на реальных документах клиента.</p>
+</div>
+
+<div class="warning">
+  <div class="warning-title">Прекратить</div>
+  <p><strong>1. HR KB как standalone продукт.</strong> Score 1.7/5 defensibility. RAG framework adoption +400%. Построить можно за 1-2 недели. HR KB — feature, не product.</p>
+  <p><strong>2. Конкуренция на уровне модели.</strong> DeepSeek: $1,1B revenue со 122 людьми. Модели — commodity. Value → data layer, integration layer, workflow layer.</p>
+</div>
+
+<div class="card" style="border-color:rgba(52,211,153,0.5);margin-top:16px;">
+  <h4>Non-obvious 10x lever: стать «Glean для России/СНГ»</h4>
+  <p>Legal Copilot — wedge product для первых 20-30 клиентов. Настоящая ставка — <strong>cross-system search platform</strong> с connector layer: 1С → Битрикс24 → Telegram → СБИС/Контур → файловые хранилища. Knowledge Graph поверх всех систем. Это меняет TAM с ~15M руб (Legal AI ниша) на <strong>$47,5B</strong> (enterprise AI Russia к 2034).</p>
+  <p style="margin-top:8px;"><strong>Путь:</strong> Legal Copilot (Year 1, 20-30 клиентов) → Connectors (Year 1-2) → Knowledge Graph (Year 2) → Cross-system search + agents (Year 2-3) → СНГ expansion (Year 3+)</p>
+</div>
+
+<h3>Антиставки: на что НЕ ставить</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>Ловушка</th><th>Доказательство</th></tr>
+<tr><td><strong>Horizontal AI assistant</strong></td><td>M365 Copilot: 40-70% лицензий не используются, 76% предпочитают ChatGPT</td></tr>
+<tr><td><strong>GPT wrapper без data moat</strong></td><td>Jasper: $120M → $35-55M ARR (−54%). Один релиз ChatGPT убил бизнес</td></tr>
+<tr><td><strong>FDE при ACV &lt;$500K</strong></td><td>Palantir: $2,3B убытков до прибыли. 50-person FDE = >$12M/год</td></tr>
+<tr><td><strong>Outcome-only pricing с первого дня</strong></td><td>Cursor: pricing crisis. Replit: margins упали с 36% до −14%</td></tr>
+<tr><td><strong>Agentic AI hype</strong></td><td>Gartner: Trough of Disillusionment. 40%+ agentic проектов отменят</td></tr>
+</table>
+</div>
+
+<h3>Timing Map</h3>
+
+<div class="table-wrap">
+<table>
+<tr><th>Ставка</th><th>Тип</th><th>Trigger</th></tr>
+<tr><td><strong>Legal Copilot on-prem</strong></td><td style="color:var(--red)"><strong>NOW</strong></td><td>Яндекс уже в рынке — каждый месяц = потеря позиции</td></tr>
+<tr><td><strong>Workshop-led sales</strong></td><td style="color:var(--red)"><strong>NOW</strong></td><td>CFO pushback → без ROI proof deals стопорятся</td></tr>
+<tr><td><strong>1С/Битрикс24 коннекторы</strong></td><td style="color:var(--orange)"><strong>SOON 6-12м</strong></td><td>Первые 10-20 клиентов подтвердят потребность</td></tr>
+<tr><td><strong>Cross-system search</strong></td><td style="color:var(--orange)"><strong>SOON 12-18м</strong></td><td>>5 коннекторов в production у 30+ клиентов</td></tr>
+<tr><td><strong>Digital labor pricing</strong></td><td style="color:var(--orange)"><strong>SOON 12-18м</strong></td><td>Данные по resolution rates для pricing model</td></tr>
+<tr><td><strong>СНГ expansion</strong></td><td style="color:var(--cyan)"><strong>LATER 18-30м</strong></td><td>Product proven на 50+ российских клиентах</td></tr>
+</table>
+</div>
+
+<h3>Power Law</h3>
+
+<div class="success-box">
+  <div class="success-title">Одна ставка решает всё</div>
+  <p><strong>Cross-system search с connector layer для российского/СНГ стека.</strong> Единственная ставка, которая меняет TAM с $15M на $47,5B. Value в enterprise AI accrues не к моделям (commodity), не к horizontal assistants (shelfware), а к <strong>integration layer + proprietary data graph + workflow embedding</strong>. Glean ($200M ARR), Palantir ($4,475B), ServiceNow ($600M+) — все владеют «connective tissue» между AI и enterprise data.</p>
+  <p style="margin-top:8px;">Для MWS AI вопрос один: <strong>«Как быстро пройти путь от Legal Copilot до cross-system search platform, пока Sber и Yandex этого не сделали?»</strong> Window: 18-24 месяца.</p>
+</div>
+
+</section>
+
 <div style="margin-top:64px;padding:24px;border-top:1px solid var(--border);color:var(--text2);font-size:12px;text-align:center;">
-  Enterprise AI GTM Analysis for MWS &middot; April 2026 &middot; Based on 8 raw research files, 4 parallel research agents, critical challenge review
+  Enterprise AI GTM Analysis for MWS &middot; April 2026 &middot; Based on 8 raw research files, 4 parallel research agents, critical challenge review<br>
+  Раздел «a16z: На что ставить» сгенерирован AI-агентом и не является позицией Andreessen Horowitz
 </div>
 
 </div>
